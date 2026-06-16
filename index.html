@@ -215,7 +215,7 @@
  <section class="home-grid">
   <div class="home-card"><h3>Create New Study</h3><p class="muted">Start a blank local study file from the active template.</p><button class="primary" onclick="openNewStudyPanel()">+ Create New Study</button></div>
   <div class="home-card"><h3>Open Existing Study</h3><p class="muted">Open a saved .study.json file from your PC, OneDrive, or network drive.</p><button class="secondary" onclick="document.getElementById('studyFileInput').click()">Open Study File</button></div>
-  <div class="home-card"><h3>Field & Template Editor</h3><p class="muted">Choose, duplicate, or edit templates before starting a study. Most users should not need this every day.</p><button class="dark" onclick="openTemplateLibrary()">Open Field & Template Editor</button></div>
+  <div class="home-card"><h3>Field & Template Editor</h3><p class="muted">Choose, duplicate, or edit templates before starting a study. Most users should not need this every day.</p><button class="dark" onclick="openTemplateLibrary()">Open Field & Template Editor</button><button class="secondary" style="margin-left:8px" onclick="resetLocalTemplatesAndReload()">Reload templates.json</button></div>
  </section>
  
 <div id="newStudyPanel" class="callout hidden">
@@ -234,6 +234,7 @@
   <button class="primary" onclick="createNewStudyFromForm()">Create Study</button>
 </div>
 
+ <div id="templateLoadStatus" class="callout"><b>Template Library:</b> loading shared templates...</div>
  <div class="callout"><b>Current workflow:</b> the <code>.study.json</code> file is the master record. CSV exports are versioned outputs for analysis, sharing, or future Labguru upload.</div>
 </main>
 
@@ -873,6 +874,74 @@ function ensureTemplateMetaForAll(){
   });
 }
 
+
+let sharedTemplatesLoaded=false;
+
+function setTemplateLoadStatus(msg){
+  const el=document.getElementById("templateLoadStatus");
+  if(el) el.innerHTML=`<b>Template Library:</b> ${msg}`;
+}
+
+async function loadTemplatesJsonFromRepo(forceReplace=true){
+  try{
+    const url=`./templates.json?v=${Date.now()}`;
+    const res=await fetch(url,{cache:"no-store"});
+    if(!res.ok) throw new Error(`templates.json not found (${res.status})`);
+    const data=await res.json();
+
+    if(!data.templates || typeof data.templates!=="object"){
+      throw new Error("templates.json does not contain a templates object");
+    }
+
+    if(forceReplace){
+      templates=data.templates || {};
+      templateMeta=data.templateMeta || {};
+      fieldSets=data.fieldSets || fieldSets || {};
+    }else{
+      templates={...templates,...(data.templates||{})};
+      templateMeta={...templateMeta,...(data.templateMeta||{})};
+      fieldSets={...fieldSets,...(data.fieldSets||{})};
+    }
+
+    localStorage.setItem("cupAssayTemplates",JSON.stringify(templates));
+    localStorage.setItem("cupAssayTemplateMeta",JSON.stringify(templateMeta||{}));
+    if(fieldSets) localStorage.setItem("cupAssayFieldSets",JSON.stringify(fieldSets));
+
+    sharedTemplatesLoaded=true;
+    ensureTemplateMetaForAll();
+    if(typeof ensureFieldSets==="function") ensureFieldSets();
+
+    if(templateName && !templates[templateName]){
+      templateName=Object.keys(templates)[0] || "";
+      if(templateName){
+        activeFieldSet=templateStudyType(templateName);
+        draft=cloneTemplateObj(templates[templateName]);
+        applied=cloneTemplateObj(draft);
+      }
+    }
+
+    setTemplateLoadStatus(`loaded shared templates.json from GitHub Pages. ${Object.keys(templates).length} template(s) available.`);
+    renderAll();
+    return true;
+  }catch(err){
+    console.warn("Could not load templates.json:",err);
+    sharedTemplatesLoaded=false;
+    setTemplateLoadStatus(`using local browser templates because templates.json could not be loaded. ${err.message}`);
+    return false;
+  }
+}
+
+function resetLocalTemplatesAndReload(){
+  if(!confirm("Clear old local templates from this browser and reload templates.json from GitHub Pages?")) return;
+  localStorage.removeItem("cupAssayTemplates");
+  localStorage.removeItem("cupAssayTemplateMeta");
+  localStorage.removeItem("cupAssayFieldSets");
+  templates={};
+  templateMeta={};
+  fieldSets={};
+  loadTemplatesJsonFromRepo(true);
+}
+
 function renderTemplateLibrary(){
   ensureTemplateMetaForAll();
   const box=document.getElementById('templateLibraryList'); if(!box) return;
@@ -1271,7 +1340,7 @@ function saveDraft(){localStorage.setItem("cupAssayStudyDraft",JSON.stringify(st
 }
 window.addEventListener('beforeunload', function(e){ if(templateDirty){ e.preventDefault(); e.returnValue=''; }});
 ensureFieldSets();
-renderAll();
+loadTemplatesJsonFromRepo(true).then(()=>renderAll());
 if ("serviceWorker" in navigator) { navigator.serviceWorker.register("./service-worker.js").catch(()=>{}); }
 </script>
 </body>
