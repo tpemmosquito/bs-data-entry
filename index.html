@@ -3,46 +3,278 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cup Assay Study Builder</title>
+<title>Bioassay Data Sheet Manager</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#111827">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f4f6;color:#111827}.app{max-width:1600px;margin:0 auto;padding:20px}.top,.tabs,.card{background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06)}.top{padding:18px;display:flex;justify-content:space-between;gap:14px;align-items:center}.eyebrow{font-size:13px;color:#6b7280;font-weight:700}h1,h2,h3{margin:0}p{margin:6px 0}.muted{color:#6b7280;line-height:1.4}.row,.pills,.chips{display:flex;flex-wrap:wrap;gap:8px}.tabs{margin:14px 0;padding:6px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.tabs button{background:transparent}.tabs button.active,.pills button.active{background:#111827;color:white}.card{padding:18px}.section{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}button{border:0;border-radius:9px;padding:9px 13px;font-weight:700;cursor:pointer}.primary{background:#2563eb;color:white}.secondary{background:#e5e7eb;color:#111827}.dark{background:#111827;color:white}.danger{background:#dc2626;color:white}.green{background:#16a34a;color:white}.warning{background:#f59e0b;color:#111827}.small{padding:5px 8px;font-size:12px}button:disabled{opacity:.55;cursor:not-allowed}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border:1px solid #9ca3af;background:#f9fafb;padding:12px;margin-bottom:18px}.grid3{grid-template-columns:repeat(3,1fr)}.field{display:flex;flex-direction:column;gap:4px}label{font-size:12px;font-weight:700;color:#374151}input,select,textarea{width:100%;border:1px solid #9ca3af;border-radius:7px;padding:8px;font-size:14px;background:white}textarea{min-height:90px}.scroll{overflow-x:auto;border:1px solid #6b7280;margin-bottom:16px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #9ca3af;padding:6px;text-align:left;vertical-align:middle}th{background:#f3f4f6;font-size:13px}td input,td select{border:0;border-radius:0;background:transparent;padding:6px}td input:focus,td select:focus{outline:2px solid #2563eb;background:white}.setup{min-width:1150px}.paper{min-width:1150px}.review{min-width:2700px;font-size:12px}.template{min-width:1250px}.callout,.box{border:1px solid #d1d5db;border-radius:12px;background:#f9fafb;padding:14px;margin-bottom:14px}.interval{background:#d1d5db;text-align:center;font-size:21px;font-weight:700;padding:8px;border:1px solid #6b7280;border-bottom:0;margin-top:16px}.new-product td{border-top:3px solid #111827}.total{background:#dcfce7;font-weight:700;text-align:center}.pupae{background:#eff6ff}.badge{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700}.draft{background:#dbeafe;color:#1e3a8a}.submitted{background:#dcfce7;color:#166534}.editing{background:#fef3c7;color:#92400e}.locked{border:1px solid #f59e0b;background:#fffbeb;color:#92400e;padding:12px;border-radius:12px;margin:14px 0;font-weight:700}.chip{border:1px solid #d1d5db;background:#f9fafb;border-radius:999px;padding:8px 12px;display:inline-flex;gap:8px;align-items:center}.hidden{display:none}.override{background:#fff7ed}.version-note{font-size:12px;color:#6b7280;margin-top:6px}.file-input-hidden{display:none}.history-table{min-width:1200px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}.full{grid-column:1/-1}.sheet-title{text-align:center;margin-bottom:14px}.structure label{display:flex;align-items:center;gap:6px}.structure input{width:auto}.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.home-card{border:1px solid #d1d5db;border-radius:14px;background:#f9fafb;padding:18px}.home-card h3{margin-bottom:8px}.template-actions{display:flex;gap:6px;flex-wrap:wrap}.dropdown-layout{display:grid;grid-template-columns:280px 1fr;gap:16px}.library-list,.option-list{display:flex;flex-direction:column;gap:8px}.library-item,.option-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid #d1d5db;border-radius:10px;background:white;padding:8px 10px}.library-item.active{border-color:#111827;background:#eef2ff}.archived-note{font-size:12px;color:#6b7280}.field-name-cell strong{display:block}.field-name-cell span{font-size:12px;color:#6b7280}.danger-light{background:#fee2e2;color:#991b1b}@media(max-width:1000px){.top,.section{flex-direction:column;align-items:stretch}.tabs{grid-template-columns:1fr}.grid,.grid3,.two-col{grid-template-columns:1fr}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f4f6;color:#111827}.app{max-width:1600px;margin:0 auto;padding:20px}.top,.tabs,.card{background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06)}.top{padding:18px;display:flex;justify-content:space-between;gap:14px;align-items:center}.eyebrow{font-size:13px;color:#6b7280;font-weight:700}h1,h2,h3{margin:0}p{margin:6px 0}.muted{color:#6b7280;line-height:1.4}.row,.pills,.chips{display:flex;flex-wrap:wrap;gap:8px}.tabs{margin:14px 0;padding:6px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.tabs button{background:transparent}.tabs button.active,.pills button.active{background:#111827;color:white}.card{padding:18px}.section{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}button{border:0;border-radius:9px;padding:9px 13px;font-weight:700;cursor:pointer}.primary{background:#2563eb;color:white}.secondary{background:#e5e7eb;color:#111827}.dark{background:#111827;color:white}.danger{background:#dc2626;color:white}.green{background:#16a34a;color:white}.warning{background:#f59e0b;color:#111827}.small{padding:5px 8px;font-size:12px}button:disabled{opacity:.55;cursor:not-allowed}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border:1px solid #9ca3af;background:#f9fafb;padding:12px;margin-bottom:18px}.grid3{grid-template-columns:repeat(3,1fr)}.field{display:flex;flex-direction:column;gap:4px}label{font-size:12px;font-weight:700;color:#374151}input,select,textarea{width:100%;border:1px solid #9ca3af;border-radius:7px;padding:8px;font-size:14px;background:white}textarea{min-height:90px}.scroll{overflow-x:auto;border:1px solid #6b7280;margin-bottom:16px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #9ca3af;padding:6px;text-align:left;vertical-align:middle}th{background:#f3f4f6;font-size:13px}td input,td select{border:0;border-radius:0;background:transparent;padding:6px}td input:focus,td select:focus{outline:2px solid #2563eb;background:white}.setup{min-width:1150px}.paper{min-width:1150px}.review{min-width:2700px;font-size:12px}.template{min-width:1250px}.callout,.box{border:1px solid #d1d5db;border-radius:12px;background:#f9fafb;padding:14px;margin-bottom:14px}.interval{background:#d1d5db;text-align:center;font-size:21px;font-weight:700;padding:8px;border:1px solid #6b7280;border-bottom:0;margin-top:16px}.new-product td{border-top:3px solid #111827}.total{background:#dcfce7;font-weight:700;text-align:center}.pupae{background:#eff6ff}.badge{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700}.draft{background:#dbeafe;color:#1e3a8a}.submitted{background:#dcfce7;color:#166534}.editing{background:#fef3c7;color:#92400e}.locked{border:1px solid #f59e0b;background:#fffbeb;color:#92400e;padding:12px;border-radius:12px;margin:14px 0;font-weight:700}.chip{border:1px solid #d1d5db;background:#f9fafb;border-radius:999px;padding:8px 12px;display:inline-flex;gap:8px;align-items:center}.chip .mini{padding:2px 6px;font-size:11px;border-radius:999px}.import-input{display:none}.hidden{display:none}.override{background:#fff7ed}.version-note{font-size:12px;color:#6b7280;margin-top:6px}.file-input-hidden{display:none}.history-table{min-width:1200px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}.full{grid-column:1/-1}.sheet-title{text-align:center;margin-bottom:14px}.structure label{display:flex;align-items:center;gap:6px}.structure input{width:auto}.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.home-card{border:1px solid #d1d5db;border-radius:14px;background:#f9fafb;padding:18px}.home-card h3{margin-bottom:8px}.template-actions{display:flex;gap:6px;flex-wrap:wrap}.dropdown-layout{display:grid;grid-template-columns:280px 1fr;gap:16px}.library-list,.option-list{display:flex;flex-direction:column;gap:8px}.library-item,.option-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid #d1d5db;border-radius:10px;background:white;padding:8px 10px}.library-item.active{border-color:#111827;background:#eef2ff}.archived-note{font-size:12px;color:#6b7280}.field-name-cell strong{display:block}.field-name-cell span{font-size:12px;color:#6b7280}.danger-light{background:#fee2e2;color:#991b1b}.modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.55);display:flex;align-items:center;justify-content:center;z-index:1000}.modal-backdrop.hidden{display:none}.modal{background:white;border-radius:14px;box-shadow:0 20px 40px rgba(0,0,0,.25);max-width:1050px;width:92vw;max-height:88vh;overflow:auto;padding:18px}.template-library-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.template-card{border:1px solid #d1d5db;border-radius:12px;background:white;padding:12px}.template-card.locked{background:#f9fafb}.tag{font-size:11px;border-radius:999px;padding:3px 8px;background:#e5e7eb;color:#374151;font-weight:700}.study-tabs{grid-template-columns:repeat(5,1fr)}.tabs.template-library-mode #setupTab,.tabs.template-library-mode #entryTab,.tabs.template-library-mode #reviewTab,.tabs.template-library-mode #labguruTab{display:none}.tabs.template-library-mode{grid-template-columns:1fr}.template-advanced{margin-top:8px}.template-advanced summary{cursor:pointer;font-weight:700}.preview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.preview-list{border:1px solid #d1d5db;border-radius:10px;background:white;padding:10px}.preview-list h4{margin:0 0 8px 0}.preview-list ul{margin:0;padding-left:18px}.template-library-mode-note{font-size:12px;color:#6b7280}
+
+.template-card.selected-template{
+  border:3px solid #2563eb;
+  box-shadow:0 0 0 4px rgba(37,99,235,.15);
+  background:#eff6ff;
+}
+.template-savebar{
+  border:1px solid #bfdbfe;
+  background:#eff6ff;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:14px;
+}
+.template-savebar.unsaved{
+  border-color:#f59e0b;
+  background:#fffbeb;
+}
+
+
+.group-header-row td{background:#dbeafe;border-top:3px solid #111827;border-bottom:2px solid #111827;font-weight:800;font-size:15px}.template-card .selected-actions{margin-top:12px;padding-top:10px;border-top:1px solid #bfdbfe;display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+
+
+.review-editing-note{
+  border:1px solid #f59e0b;
+  background:#fffbeb;
+  color:#92400e;
+  border-radius:10px;
+  padding:10px;
+  font-weight:700;
+  margin-bottom:12px;
+}
+.review input.review-pending{
+  color:#dc2626 !important;
+  font-weight:700;
+  background:#fff1f2 !important;
+}
+.review input:disabled{
+  color:#374151;
+  background:#f9fafb !important;
+  cursor:not-allowed;
+}
+
+
+.context-bar{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin:14px 0;
+  padding:12px;
+  background:#ffffff;
+  border-radius:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  border:1px solid #e5e7eb;
+}
+.context-item{
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  padding:8px 10px;
+  background:#f9fafb;
+}
+.context-label{
+  font-size:11px;
+  color:#6b7280;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.context-value{
+  font-size:14px;
+  font-weight:800;
+  margin-top:3px;
+}
+.template-applied-banner{
+  border:1px solid #16a34a;
+  background:#dcfce7;
+  color:#166534;
+  border-radius:10px;
+  padding:10px 12px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+.fieldset-select-wrap{
+  border:1px solid #d1d5db;
+  background:#f9fafb;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:14px;
+}
+@media(max-width:1000px){.context-bar{grid-template-columns:1fr}}
+
+@media(max-width:1000px){.top,.section{flex-direction:column;align-items:stretch}.tabs{grid-template-columns:1fr}.grid,.grid3,.two-col{grid-template-columns:1fr}}
+
+.tabs.study-tabs{grid-template-columns:repeat(5,minmax(0,1fr));align-items:center}
+.tabs.study-tabs button{white-space:nowrap}
+@media(max-width:1000px){.tabs.study-tabs{grid-template-columns:1fr}}
+
+.fieldset-manager-layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:16px;
+}
+.fieldset-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.fieldset-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  background:white;
+  padding:9px 10px;
+}
+.fieldset-item.active{
+  border:3px solid #2563eb;
+  background:#eff6ff;
+}
+.fieldset-table{min-width:1150px}
+.fieldset-manager-note{
+  border:1px solid #bfdbfe;
+  background:#eff6ff;
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:12px;
+}
+
+
+.fieldset-inline-panel{
+  border:2px solid #2563eb;
+  background:#ffffff;
+  border-radius:14px;
+  padding:18px;
+  margin:14px 0;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+.fieldset-inline-panel.hidden{display:none}
+.fieldset-inline-panel .modal{box-shadow:none;max-width:none;width:auto;max-height:none;overflow:visible;padding:0}
+
+
+.required-field-badge{
+  display:inline-block;
+  margin-left:6px;
+  border-radius:999px;
+  padding:2px 7px;
+  font-size:11px;
+  font-weight:800;
+  background:#dbeafe;
+  color:#1e3a8a;
+}
+.template-field-badge{
+  display:inline-block;
+  margin-left:6px;
+  border-radius:999px;
+  padding:2px 7px;
+  font-size:11px;
+  font-weight:800;
+  background:#fef3c7;
+  color:#92400e;
+}
+
+
+.template-edit-only.hidden{display:none!important}
+.template-browse-only.hidden{display:none!important}
+.study-type-locked-note{
+  display:inline-block;
+  margin-left:8px;
+  color:#92400e;
+  font-weight:800;
+}
+.editor-mode-banner{
+  border:1px solid #bfdbfe;
+  background:#eff6ff;
+  border-radius:12px;
+  padding:10px 12px;
+  margin:10px 0 14px 0;
+  font-weight:700;
+}
+.editor-mode-banner.unsaved{
+  border-color:#f59e0b;
+  background:#fffbeb;
+  color:#92400e;
+}
+
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top"><div><div class="eyebrow">Dose Response Data Tool</div><h1>Cup Assay Study Builder</h1><p class="muted">Study templates, field manager, dropdown libraries, data entry, review, and CSV export.</p></div><div class="row"><button class="secondary" onclick="document.getElementById('studyFileInput').click()">Open Study File</button><button class="secondary" onclick="saveStudyFile(false)">Save Study File</button><button class="secondary" onclick="saveStudyFile(true)">Save As Version</button><button class="primary" onclick="downloadDailyCsv()">Export CSV</button></div></header><input id="studyFileInput" class="file-input-hidden" type="file" accept=".json,.study.json,application/json" onchange="openStudyFile(this.files[0])">
-<nav class="tabs"><button id="homeTab" class="active" onclick="showTab('home')">Home</button><button id="setupTab" onclick="showTab('setup')">Study/Round Setup</button><button id="templateTab" onclick="showTab('template')">Template Builder</button><button id="entryTab" onclick="showTab('entry')">Data Entry</button><button id="reviewTab" onclick="showTab('review')">Review Raw Data</button><button id="labguruTab" onclick="showTab('labguru')">Labguru Export</button></nav>
+<header class="top"><div><h1>Bioassay Data Sheet Manager</h1></div><div class="row"><button class="secondary" onclick="document.getElementById('studyFileInput').click()">Open Study File</button><button class="secondary" onclick="saveStudyFile(false)">Save Study File</button><button class="secondary" onclick="saveStudyFile(true)">Save As Version</button><button class="primary" onclick="downloadDailyCsv()">Export CSV</button></div></header>
+<section id="contextBar" class="context-bar">
+  <div class="context-item"><div class="context-label">Current Study</div><div id="ctxStudy" class="context-value">Not started</div></div>
+  <div class="context-item"><div class="context-label">Current Template</div><div id="ctxTemplate" class="context-value">Standard Cup Assay</div></div>
+  <div class="context-item"><div class="context-label">Study Type</div><div id="ctxFieldSet" class="context-value">Larvicide Bioassay</div></div>
+  <div class="context-item"><div class="context-label">Study File</div><div id="ctxStudyFile" class="context-value">Not saved</div></div>
+  <div class="context-item"><div class="context-label">Dataset Version</div><div id="ctxVersion" class="context-value">v001</div></div>
+</section>
+<input id="studyFileInput" class="file-input-hidden" type="file" accept=".json,.study.json,application/json" onchange="openStudyFile(this.files[0])">
+<nav class="tabs study-tabs"><button id="homeTab" class="active" onclick="showTab('home')">Home</button><button id="setupTab" onclick="showTab('setup')">Study / Round Setup</button><button id="entryTab" onclick="showTab('entry')">Data Entry</button><button id="reviewTab" onclick="showTab('review')">Review Raw Data</button><button id="labguruTab" onclick="showTab('labguru')">Export / Labguru</button><button id="templateTab" class="hidden" onclick="showTab('template')">Template Library</button></nav>
 
 
 <main id="homePanel" class="card">
- <div class="section"><div><h2>Bioassay Data Collection Platform</h2><p class="muted">Create a new study, open a local .study.json file, or manage templates before starting data entry.</p></div></div>
+ <div class="section"><div><h2>Bioassay Data Sheet Manager</h2><p class="muted">Create a new study, open a local .study.json file, or manage templates before starting data entry.</p></div></div>
  <section class="home-grid">
-  <div class="home-card"><h3>Create New Study</h3><p class="muted">Start a blank local study file from the active template.</p><button class="primary" onclick="createNewStudy()">+ Create New Study</button></div>
+  <div class="home-card"><h3>Create New Study</h3><p class="muted">Start a blank local study file from the active template.</p><button class="primary" onclick="openNewStudyPanel()">+ Create New Study</button></div>
   <div class="home-card"><h3>Open Existing Study</h3><p class="muted">Open a saved .study.json file from your PC, OneDrive, or network drive.</p><button class="secondary" onclick="document.getElementById('studyFileInput').click()">Open Study File</button></div>
-  <div class="home-card"><h3>Template Builder</h3><p class="muted">Manage templates, fields, and dropdown libraries. Most users should not need this every day.</p><button class="dark" onclick="showTab('template')">Open Template Builder</button></div>
+  <div class="home-card"><h3>Field & Template Editor</h3><p class="muted">Choose, duplicate, or edit templates before starting a study. Most users should not need this every day.</p><button class="dark" onclick="openTemplateLibrary()">Open Field & Template Editor</button></div>
  </section>
+ 
+<div id="newStudyPanel" class="callout hidden">
+  <div class="section">
+    <div>
+      <h3>Create New Study</h3>
+      <p class="muted">Choose a study type and template, then create the local study workspace.</p>
+    </div>
+    <button class="secondary" onclick="closeNewStudyPanel()">Cancel</button>
+  </div>
+  <section class="grid grid3">
+    <div class="field"><label>Study Number</label><input id="newStudyNumberInput" placeholder="e.g., BA-S2507"></div>
+    <div class="field"><label>Study Type</label><select id="newStudyTypeSelect" onchange="renderNewStudyTemplateOptions()"></select></div>
+    <div class="field"><label>Template</label><select id="newStudyTemplateSelect"></select></div>
+  </section>
+  <button class="primary" onclick="createNewStudyFromForm()">Create Study</button>
+</div>
+
  <div class="callout"><b>Current workflow:</b> the <code>.study.json</code> file is the master record. CSV exports are versioned outputs for analysis, sharing, or future Labguru upload.</div>
 </main>
 
 <main id="setupPanel" class="card hidden">
- <div class="section"><div><h2>Study / Round Setup</h2><p class="muted">Set study-level fields, then edit the active round’s products and readings. If weeks are off, Week Number exports as NA.</p></div><div class="row"><button class="primary" id="addRoundBtn" onclick="addRound()">+ Add Round</button><button class="dark" onclick="showTab('entry')">Go to Data Entry</button></div></div>
+ <div class="section"><div><h2>Study / Round Setup</h2><p class="muted">Set study-level fields, then edit the active round’s products and readings. If weeks are off, Week Number exports as NA.</p></div><div class="row"><button class="secondary" onclick="editStudyTemplate()">Edit / Change Study Template</button><button class="primary" id="addRoundBtn" onclick="addRound()">+ Add Round</button><button class="secondary" id="duplicateRoundBtn" onclick="duplicateRound()">Duplicate Active Round</button><button class="dark" onclick="showTab('entry')">Go to Data Entry</button></div></div>
  <div class="callout"><h3>Study Structure</h3><div class="row structure"><label><input type="checkbox" id="useRounds" onchange="setStructure('useRounds',this.checked)" checked>Use Rounds</label><label><input type="checkbox" id="useWeeks" onchange="setStructure('useWeeks',this.checked)">Extended Study / Use Weeks</label></div></div>
  <h3>Study-Level Setup</h3><section id="studySetup" class="grid"></section>
  <div id="roundBlock"><div class="section"><div><h3>Rounds</h3><p class="muted">Select a round to edit.</p></div></div><div id="roundPills" class="pills"></div><h3 id="roundTitle">Round Setup</h3><section id="roundSetup" class="grid grid3"></section></div>
- <div class="section"><h3>Product / Treatment Setup</h3><button class="primary" onclick="addProduct()">+ Add Product</button></div><div class="scroll"><table class="setup"><thead><tr id="productHead"></tr></thead><tbody id="productBody"></tbody></table></div>
+ <div class="section"><h3>Treatment / Condition Setup</h3><div class="row"><button class="secondary" onclick="duplicateConditionsWithSpecies()">Duplicate Conditions With Species</button><button class="primary" onclick="addProduct()">+ Add Condition</button></div></div><div class="scroll"><table class="setup"><thead><tr id="productHead"></tr></thead><tbody id="productBody"></tbody></table></div>
  <div class="section"><h3>Reading Schedule</h3><div class="row"><button class="primary" onclick="addReading()">+ New Reading</button><button class="green" onclick="addStandardReadings()">Add 24/48/72/96</button></div></div><div class="scroll"><table class="setup"><thead><tr id="readingHead"></tr></thead><tbody id="readingBody"></tbody></table></div>
  <section class="two-col"><div class="field"><label>Study Notes</label><textarea id="studyNotes" onchange="study.notes=this.value" placeholder="Optional notes..."></textarea></div><div class="box"><label>Attachments</label><p class="muted">Prototype placeholder for future Labguru/file upload.</p></div></section>
 </main>
 
 <main id="templatePanel" class="card hidden">
- <div class="section"><div><h2>Template Builder</h2><p class="muted">Current template: <b id="templateNameLabel">Standard Cup Assay</b>. Create fields, manage dropdown libraries, and apply templates.</p></div><div class="row"><button class="secondary" onclick="newTemplate()">New</button><button class="secondary" onclick="saveTemplate()">Save</button><button class="secondary" onclick="loadTemplate()">Load</button><button class="secondary" onclick="duplicateTemplate()">Duplicate</button><button class="danger" onclick="deleteTemplate()">Delete</button><button class="green" onclick="applyTemplate()">Apply Template</button></div></div>
+ <div class="section"><div><h2>Field & Template Editor</h2><p id="templateModeText" class="muted">Choose a template, duplicate locked shared templates, then edit custom versions as needed.</p></div><div class="row"><button id="templateBackButton" class="secondary" onclick="exitTemplateEditor()">Back Home</button><button class="secondary" onclick="newTemplate()">New Custom Template</button><button class="green" onclick="exportTemplateLibrary()">Export templates.json</button><button id="templateApplyButton" class="green hidden" onclick="applyTemplateToCurrentStudy()">Save Changes to Study</button><details class="template-advanced"><summary>More Template File Tools</summary><div class="row" style="margin-top:8px"><button class="secondary" onclick="loadSharedTemplates()">Load Shared</button><button class="secondary" onclick="document.getElementById('templateImportInput').click()">Import Templates</button></div></details><input id="templateImportInput" class="import-input" type="file" accept=".json,application/json" onchange="importTemplateLibrary(this.files[0])"></div></div>
+ <div id="templateAppliedBanner" class="template-applied-banner hidden">✓ Template Applied</div>
+ <div id="editorModeBanner" class="editor-mode-banner hidden"></div>
+ <div id="templateStatusBanner" class="template-savebar">Currently Editing: <b id="currentTemplateName">Template</b> • Saved</div>
+<div class="fieldset-select-wrap"><div class="section" style="margin-bottom:0"><div class="field" style="max-width:420px"><label>Study Type</label><select id="fieldSetSelect" onchange="setTemplateFieldSet(this.value)"><option>Larvicide Bioassay</option><option>Larvicide Dose Response</option></select><span id="studyTypeLockedNote" class="study-type-locked-note hidden">🔒 Locked while editing</span><p class="muted">Study Type defines the standardized group of fields this template is built from. Template controls layout, grouping, and visibility.</p></div><div class="row"><button class="secondary" onclick="openFieldSetManager()">Edit Study Type Fields</button></div></div>
+
+
+  <div id="fieldSetModal" class="fieldset-inline-panel hidden"><div class="modal"><div class="section"><div><h2>Study Type Manager</h2><p class="muted">Study types define the standardized field library available to templates. Templates then control layout, grouping, visibility, and order.</p></div><button class="secondary" onclick="closeFieldSetManager()">Hide Study Type Manager</button></div>
+   <div class="fieldset-manager-note"><b>Workflow:</b> choose a study type, edit its field library, save it, then apply that study type to the current template if needed.</div>
+   <div class="fieldset-manager-layout">
+    <div>
+      <div class="section"><h3>Study Types</h3><button class="primary small" onclick="addFieldSet()">+ Study Type</button></div>
+      <div id="fieldSetList" class="fieldset-list"></div>
+    </div>
+    <div>
+      <div class="section"><div><h3 id="activeFieldSetTitle">Field Library</h3><p class="muted">These are the fields available for this study type.</p></div><div class="row"><button class="secondary" onclick="renameFieldSet()">Rename Study Type</button><button class="primary" onclick="addFieldToFieldSet()">+ Add Field</button><button class="green" onclick="saveActiveFieldSet()">Save Study Type</button><button class="warning" onclick="applyActiveFieldSetToTemplate()">Apply to Current Template</button></div></div>
+      <div class="scroll"><table class="fieldset-table"><thead><tr><th>Order</th><th>Field</th><th>CSV Header</th><th>Entry Level</th><th>Data Type</th><th>Dropdown Library</th><th>Show in Setup</th><th>Show on Data Sheet</th><th>Export to Raw Data</th><th>Actions</th></tr></thead><tbody id="fieldSetFieldBody"></tbody></table></div>
+    </div>
+   </div>
+  </div></div>
+
+  </div>
+  <div class="box"><div class="section"><div><h3>Field & Template Editor</h3><p class="muted">Shared templates are locked. Duplicate one to make an editable custom template.</p></div></div><div id="templateLibraryList" class="template-library-grid"></div></div>
  <div class="callout"><h3>Entry Level Guide</h3><p><b>Study:</b> filled once. <b>Round:</b> changes by round. <b>Week:</b> changes by week within a round. <b>Reading:</b> changes each reading/timepoint. <b>Product:</b> grouped across reps. <b>Rep:</b> each individual replicate/cup/container.</p></div>
  <section class="two-col">
-  <div class="box"><div class="section"><h3>Field Manager</h3><button class="primary" onclick="addField()">+ Add Field</button></div><div class="row" style="margin-bottom:12px"><button class="secondary" onclick="baseTemplate('standard')">Standard</button><button class="secondary" onclick="baseTemplate('lot')">Lot Comparison</button><button class="secondary" onclick="baseTemplate('feeding')">Feeding Study</button><button class="secondary" onclick="baseTemplate('extended')">Extended Study</button></div><div class="scroll"><table class="template"><thead><tr><th>Field</th><th>CSV Header</th><th>Entry Level</th><th>Data Type</th><th>Dropdown Library</th><th>Setup</th><th>Show</th><th>Export</th><th>Remove</th></tr></thead><tbody id="fieldBody"></tbody></table></div></div>
-  <div class="box"><h3>Dropdown Manager</h3><p class="muted">Add, edit, and archive dropdown libraries/options. Archived items are hidden from future selections but kept for old study data.</p>
-   <div class="dropdown-layout">
+  <div class="box full"><div class="section"><div><h3>Field Manager</h3><p class="muted">Edit the selected template. Study Type fields are required for the raw data model; template-specific fields can be added or removed here.</p></div><div class="row"><button class="secondary" onclick="openDropdownModal()">Manage Dropdown Libraries</button><button class="primary" onclick="addField()">+ Add Field</button></div></div><div class="callout"><div class="field" style="max-width:420px"><label>Data Sheet Group By</label><select id="dataSheetGroupBySelect" onchange="setDataSheetGroupBy(this.value)"></select><p class="muted">Optional visual section header on the data-entry sheet. The grouped field still exports to CSV but is hidden as a normal sheet column.</p></div></div><div class="scroll"><table class="template"><thead><tr><th>Order</th><th>Field</th><th>CSV Header</th><th>Entry Level</th><th>Data Type</th><th>Dropdown Library</th><th>Setup</th><th>Show</th><th>Export</th><th>Actions</th></tr></thead><tbody id="fieldBody"></tbody></table></div></div>
+<div id="dropdownModal" class="modal-backdrop hidden"><div class="modal"><div class="section"><div><h2>Dropdown Manager</h2><p class="muted">Add, edit, and archive dropdown libraries/options. Archived items are hidden from future selections but kept for old study data.</p></div><button class="secondary" onclick="closeDropdownModal()">Close</button></div><div class="dropdown-layout">
     <div>
      <div class="section"><h3>Libraries</h3><button class="primary small" onclick="addDropdownLibrary()">+ Library</button></div>
      <div id="dropdownLibraries" class="library-list"></div>
@@ -53,15 +285,15 @@
      <h3>Active Options</h3><div id="dropdownOptions" class="option-list"></div>
      <h3 style="margin-top:14px;">Archived Options</h3><div id="archivedDropdownOptions" class="option-list"></div>
     </div>
-   </div>
-  </div>
-  <div class="box full"><h3>Live Data Sheet Preview</h3><p class="muted">Preview uses 2 products × 4 reps. Only fields marked Show appear here.</p><div id="visibleChips" class="chips" style="margin-bottom:12px"></div><div class="scroll"><table class="paper"><thead id="previewHead"></thead><tbody id="previewBody"></tbody></table></div></div>
+   </div></div></div>
+  <div class="box full"><h3>Study / Round Setup Preview</h3><p class="muted">Shows where setup fields will appear before data entry.</p><div id="setupPreview" class="preview-grid"></div></div>
+  <div class="box full"><h3>Live Data Sheet Preview</h3><p class="muted">Preview uses 2 conditions × 4 reps. Only fields marked Show appear here.</p><div id="visibleChips" class="chips" style="margin-bottom:12px"></div><div class="scroll"><table class="paper"><thead id="previewHead"></thead><tbody id="previewBody"></tbody></table></div></div>
  </section>
 </main>
 
-<main id="entryPanel" class="card hidden"><section class="sheet-title"><h2>Cup Assay Data Entry Sheet</h2><p>Study No. <span id="studyNumberPreview">_____</span></p></section><div class="section"><div><h2 id="activeReadingTitle">Active Reading</h2><p class="muted">Submit locks the reading and saves the template snapshot used for that sheet.</p></div><div class="row"><button class="secondary" onclick="showTab('setup')">Edit Setup</button><button id="editSubmittedButton" class="warning hidden" onclick="unlockReading()">Edit Submitted Reading</button><button id="submitReadingButton" class="green" onclick="submitReading()">Submit Reading</button><button class="primary" onclick="downloadCsv()">Export CSV</button></div></div><div id="lockedBanner" class="locked hidden">This reading is submitted and locked. Click “Edit Submitted Reading” for corrections.</div><div id="entryRoundPills" class="pills"></div><div id="readingPills" class="pills"></div><div id="intervalHeader" class="interval">ROUND 1 — 24 HOURS</div><div class="scroll"><table class="paper"><thead id="entryHead"></thead><tbody id="entryBody"></tbody></table></div></main>
+<main id="entryPanel" class="card hidden"><section class="sheet-title"><h2 id="entrySheetTitle">Bioassay Data Sheet</h2><p>Study No. <span id="studyNumberPreview">_____</span></p></section><div class="section"><div><h2 id="activeReadingTitle">Active Reading</h2><p class="muted">Submit locks the reading and saves the template snapshot used for that sheet.</p></div><div class="row"><button class="secondary" onclick="showTab('setup')">Edit Setup</button><button id="editSubmittedButton" class="warning hidden" onclick="unlockReading()">Edit Submitted Reading</button><button id="submitReadingButton" class="green" onclick="submitReading()">Submit Reading</button><button class="primary" onclick="downloadCsv()">Export CSV</button></div></div><div id="lockedBanner" class="locked hidden">This reading is submitted and locked. Click “Edit Submitted Reading” for corrections.</div><div id="entryRoundPills" class="pills"></div><div id="readingPills" class="pills"></div><div id="intervalHeader" class="interval">ROUND 1 — 24 HOURS</div><div class="scroll"><table class="paper"><thead id="entryHead"></thead><tbody id="entryBody"></tbody></table></div></main>
 
-<main id="reviewPanel" class="card hidden"><div class="section"><div><h2>Review Raw Data</h2><p class="muted">Edit cells before export. Edited cells are saved as review overrides. Blank/unused fields export as NA.</p><p id="exportStatus" class="version-note"></p></div><div class="row"><button class="secondary" onclick="saveStudyFile(false)">Save Study File</button><button class="primary" onclick="downloadDailyCsv()">Daily CSV Export</button><button class="green" onclick="downloadFullVersionCsv()">New Full Version CSV</button></div></div><div class="scroll"><table class="review"><thead><tr id="reviewHead"></tr></thead><tbody id="reviewBody"></tbody></table></div><h3>Export History</h3><div class="scroll"><table class="setup history-table"><thead><tr><th>Time</th><th>Type</th><th>Version</th><th>Rows</th><th>Reason</th><th>File</th></tr></thead><tbody id="exportHistoryBody"></tbody></table></div></main>
+<main id="reviewPanel" class="card hidden"><div class="section"><div><h2>Review Raw Data</h2><p class="muted">Edit cells before export. Edited cells are saved as review overrides. Blank/unused fields export as NA.</p><p id="exportStatus" class="version-note"></p></div><div class="row"><button id="editReviewBtn" class="warning" onclick="enableReviewEditing()">Edit Review Table</button><button id="saveReviewBtn" class="green hidden" onclick="saveReviewEdits()">Save Review Edits</button><button id="cancelReviewBtn" class="secondary hidden" onclick="cancelReviewEdits()">Cancel Review Edits</button><button class="secondary" onclick="saveStudyFile(false)">Save Study File</button><button class="primary" onclick="downloadDailyCsv()">Daily CSV Export</button><button class="green" onclick="downloadFullVersionCsv()">New Full Version CSV</button></div></div><div class="scroll"><table class="review"><thead><tr id="reviewHead"></tr></thead><tbody id="reviewBody"></tbody></table></div><h3>Export History</h3><div class="scroll"><table class="setup history-table"><thead><tr><th>Time</th><th>Type</th><th>Version</th><th>Rows</th><th>Reason</th><th>File</th></tr></thead><tbody id="exportHistoryBody"></tbody></table></div></main>
 
 <main id="labguruPanel" class="card hidden">
  <div class="section"><div><h2>Safe Labguru Export</h2><p class="muted">This workflow never overwrites prior data. Every upload is a new versioned CSV or an updates-only CSV. API keys are not saved.</p></div><div class="row"><button class="secondary" onclick="generateLabguruFilename()">Generate Filename</button><button class="primary" onclick="downloadLabguruCsv()">Download Selected CSV</button></div></div>
@@ -93,9 +325,18 @@ const BASE=[F("studyNumber","Study Number","Study",true,true,false,"Text","",tru
 let dropdowns=normalizeDropdowns(JSON.parse(localStorage.getItem("cupAssayDropdowns")||"null")||{"Indoor / Outdoor":["Indoor","Outdoor"],"Container Type":["Cup","Tray","Bucket"],"Dose Units":["ppm","ppb","mg/L","µg/L"],"Feeding Method":["Fed","Not Fed"],"Mosquito Species":["Aedes aegypti ORL","Aedes albopictus","Culex pipiens"],"Larvae Instar":["1st","2nd","3rd","4th"],"Stock Storage Method":["Room Temp","Fridge","Freezer"],"Reader":["TP"]});
 let activeDropdownLibrary=Object.keys(dropdowns).find(k=>!dropdowns[k].archived)||Object.keys(dropdowns)[0];
 let study={studyNumber:"",studyLocation:"",indoorOutdoor:"Indoor",containerType:"Cup",waterVolume:"250 mL",doseUnits:"ppm",feedingMethod:"",stressTest:"No",mosquitoSpecies:"Aedes aegypti ORL",larvaeInstar:"",notes:""};
-let structure={useRounds:true,useWeeks:false},draft=BASE.map(x=>({...x})),applied=BASE.map(x=>({...x})),templateName="Standard Cup Assay",templates=JSON.parse(localStorage.getItem("cupAssayTemplates")||"{}");
-let rounds=[makeRound(1)],activeRoundId=rounds[0].id,activeReadingId=rounds[0].readings[0].id,reviewOverrides={},uploadHistory=[],lastUploadSnapshot={},currentTab="home";
+function makeTemplatePreset(type){let t=BASE.map(x=>({...x,showSheet:false}));let sp=t.find(x=>x.key==="mosquitoSpecies");if(sp){sp.level="Product";sp.includeSetup=true;sp.exportCsv=true;sp.showSheet=true;}["product","dose","rep","pupae","alive","moribund","dead","total"].forEach(k=>{let f=t.find(x=>x.key===k);if(f)f.showSheet=true;});if(type==="lot"){let f=t.find(x=>x.key==="nbLotNumber");if(f)f.showSheet=true;}if(type==="feeding"){let f=t.find(x=>x.key==="feedingMethod");if(f){f.showSheet=true;f.level="Product";f.includeSetup=true;}}if(type==="extended"){let f=t.find(x=>x.key==="weekNumber");if(f)f.showSheet=true;}return t;}
+function defaultTemplateLibrary(){return {"Standard Cup Assay":makeTemplatePreset("standard"),"Lot Comparison":makeTemplatePreset("lot"),"Feeding Study":makeTemplatePreset("feeding"),"Extended Study":makeTemplatePreset("extended")};}
+let structure={useRounds:true,useWeeks:false},draft=makeTemplatePreset("standard"),applied=makeTemplatePreset("standard"),templateName="Standard Cup Assay",templates=JSON.parse(localStorage.getItem("cupAssayTemplates")||"{}");
+if(!Object.keys(templates).length){templates=defaultTemplateLibrary();localStorage.setItem("cupAssayTemplates",JSON.stringify(templates));}
+let rounds=[makeRound(1)],activeRoundId=rounds[0].id,activeReadingId=rounds[0].readings[0].id,reviewOverrides={},uploadHistory=[],lastUploadSnapshot={},currentTab="home", templateEditorSource="library";
+let templateMeta=JSON.parse(localStorage.getItem('cupAssayTemplateMeta')||'{}'), draftGroupBy='', appliedGroupBy='';
 let datasetVersion=1, exportHistory=[], lastOfficialSnapshot=null, studyFileVersion=1;
+let gridHomeCols={}, reviewEditMode=false, pendingReviewOverrides={};
+let activeFieldSet='Larvicide Bioassay', studyFileName='Not saved';
+let templateEditMode=false;
+let fieldSets=JSON.parse(localStorage.getItem('cupAssayFieldSets')||'null')||{};let activeFieldSetManager='Larvicide Bioassay';
+let templateDirty=false, templateBaseline=null;
 function id(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
 function makeProduct(i){return{id:id(),product:i===0?"Control":"",dose:i===0?"0":"",crNumber:"",nbLotNumber:"",dateOfStockPrep:"",stockStorageMethod:"",feedingMethod:"",stressTest:"",mosquitoSpecies:"",larvaeInstar:"",repCount:4}}
 function makeReading(w=1,int="24 Hours"){return{id:id(),weekNumber:w,readingInterval:int,dateOfReading:"",reader:"",status:"Draft",submittedAt:"",locked:false,templateSnapshot:null,data:{}}}
@@ -107,39 +348,718 @@ function archivedOptions(lib){let d=dropdowns[lib];return d?d.archived||[]:[]}
 const esc=v=>String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 const na=v=>(v===undefined||v===null||v==="")?"NA":v; const num=v=>{const n=Number(v);return Number.isFinite(n)?n:0}; const pct=(p,t)=>t?((p/t)*100).toFixed(1):"NA";
 const getRound=()=>structure.useRounds?(rounds.find(r=>r.id===activeRoundId)||rounds[0]):rounds[0]; const getReading=()=>{const r=getRound();return r.readings.find(x=>x.id===activeReadingId)||r.readings[0]}; const tmplFor=r=>r?.templateSnapshot||applied; const field=(key,t=draft)=>t.find(x=>x.key===key)||BASE.find(x=>x.key===key);
-function showFields(t=applied){return t.filter(x=>!x.archived && x.key!=="studyNumber" && x.showSheet && (structure.useWeeks || x.key!=="weekNumber"))} function setupFields(level){return draft.filter(x=>!x.archived && x.includeSetup&&x.level===level&&!(["studyNumber","product","dose","weekNumber","readingInterval"].includes(x.key)))}
+function showFields(t=applied){const gb=(t===draft?draftGroupBy:appliedGroupBy);return t.filter(x=>!x.archived && x.key!=="studyNumber" && x.key!==gb && x.showSheet && (structure.useWeeks || x.key!=="weekNumber"))} function setupFields(level){return draft.filter(x=>!x.archived && x.includeSetup&&x.level===level&&!(["studyNumber","product","dose","weekNumber","readingInterval"].includes(x.key)))}
 function ensureData(round,reading){round.products.forEach(p=>{if(!reading.data[p.id])reading.data[p.id]={};for(let i=1;i<=Number(p.repCount||0);i++){if(!reading.data[p.id][i])reading.data[p.id][i]={pupae:"",alive:"",moribund:"",dead:"",notes:""}}})}
 function getVal(key,round,reading,prod,repData,rep,t=applied){const spec=field(key,t); if(key==="studyNumber")return study.studyNumber;if(key==="roundOfTesting")return round.roundOfTesting;if(key==="weekNumber")return structure.useWeeks?reading.weekNumber:"NA";if(key==="readingInterval")return reading.readingInterval;if(key==="dateOfReading")return reading.submittedAt;if(key==="rep")return rep;if(key==="total")return num(repData.alive)+num(repData.moribund)+num(repData.dead);if(["pupae","alive","moribund","dead","notes"].includes(key))return repData[key]||"";if(spec?.level==="Study")return study[key]||"";if(spec?.level==="Round")return round[key]||study[key]||"";if(spec?.level==="Week")return reading[key]||round[key]||"";if(spec?.level==="Reading")return reading[key]||"";if(spec?.level==="Product")return prod[key]||"";if(spec?.level==="Rep")return repData[key]||"";return""}
 function inputFor(spec,value,onchange,disabled=false){if(spec.type==="Dropdown"){const lib=spec.lib||"";return `<input ${lib?`list="dl-${esc(lib)}"`:""} value="${esc(value)}" ${disabled?"disabled":""} onchange="${onchange}">`} if(spec.type==="Yes/No")return `<select ${disabled?"disabled":""} onchange="${onchange}"><option ${value==="No"?"selected":""}>No</option><option ${value==="Yes"?"selected":""}>Yes</option></select>`;let type=spec.type==="Number"?"number":spec.type==="Date"?"date":spec.type==="Date/Time"?"datetime-local":"text";return `<input type="${type}" value="${esc(value)}" ${disabled?"disabled":""} onchange="${onchange}">`}
+function addGridNavAttrs(html,grid,row,col){
+  return html.replace(/<(input|select)/,`<$1 data-grid="${grid}" data-row="${row}" data-col="${col}" onfocus="setGridHomeColumn(event)" onclick="setGridHomeColumn(event)" onkeydown="gridKeyNav(event)"`);
+}
+function setGridHomeColumn(event){
+  const el=event.target;
+  const grid=el.dataset.grid;
+  if(!grid) return;
+  const col=Number(el.dataset.col);
+  if(el.dataset.skipHomeOnce==="1"){
+    el.dataset.skipHomeOnce="";
+    return;
+  }
+  gridHomeCols[grid]=col;
+}
+function focusGridCell(grid,row,col){
+  let next=document.querySelector(`[data-grid="${grid}"][data-row="${row}"][data-col="${col}"]:not([disabled])`);
+  if(!next){
+    const candidates=[...document.querySelectorAll(`[data-grid="${grid}"][data-row="${row}"]:not([disabled])`)]
+      .sort((a,b)=>Number(a.dataset.col)-Number(b.dataset.col));
+    next=candidates.find(x=>Number(x.dataset.col)>=col) || candidates[candidates.length-1];
+  }
+  if(next){
+    next.dataset.skipHomeOnce="1";
+    next.focus();
+    if(next.select) next.select();
+  }
+}
+function gridKeyNav(event){
+  const key=event.key;
+  if(!["Tab","Enter","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(key)) return;
+  const el=event.target;
+  const grid=el.dataset.grid; if(!grid) return;
+  const row=Number(el.dataset.row), col=Number(el.dataset.col);
+  let targetRow=row, targetCol=col;
+
+  if(key==="Tab"){
+    event.preventDefault();
+    targetCol += event.shiftKey ? -1 : 1;
+  }
+  if(key==="Enter"){
+    event.preventDefault();
+    targetRow += event.shiftKey ? -1 : 1;
+    targetCol = (gridHomeCols[grid] ?? col);
+  }
+  if(key==="ArrowDown"){
+    event.preventDefault();
+    targetRow += 1;
+    targetCol = col;
+    gridHomeCols[grid]=col;
+  }
+  if(key==="ArrowUp"){
+    event.preventDefault();
+    targetRow -= 1;
+    targetCol = col;
+    gridHomeCols[grid]=col;
+  }
+  if(key==="ArrowRight" && !event.shiftKey){
+    event.preventDefault();
+    targetCol += 1;
+    gridHomeCols[grid]=targetCol;
+  }
+  if(key==="ArrowLeft" && !event.shiftKey){
+    event.preventDefault();
+    targetCol -= 1;
+    gridHomeCols[grid]=targetCol;
+  }
+  focusGridCell(grid,targetRow,targetCol);
+}
 function renderDatalists(){let html="";activeLibraries().forEach(lib=>{html+=`<datalist id="dl-${esc(lib)}">${activeOptions(lib).map(o=>`<option value="${esc(o)}"></option>`).join("")}</datalist>`});let old=document.getElementById("datalists"); if(!old){old=document.createElement("div");old.id="datalists";document.body.appendChild(old)} old.innerHTML=html}
-function rawRows(){const rows=[];rounds.forEach(round=>round.readings.forEach(reading=>{ensureData(round,reading);round.products.forEach(prod=>{for(let rep=1;rep<=Number(prod.repCount||0);rep++){const rd=reading.data[prod.id][rep];const alive=num(rd.alive),mor=num(rd.moribund),dead=num(rd.dead),pup=num(rd.pupae),total=alive+mor+dead;const rid=`${round.id}|${reading.id}|${prod.id}|${rep}`;let row={_rowId:rid};RAW_COLUMNS.forEach(c=>row[c]="NA");Object.assign(row,{"Study Number":na(study.studyNumber),"Round of Testing":structure.useRounds?na(round.roundOfTesting):"NA","Date of Stock Prep":na(prod.dateOfStockPrep),"Stock Storage Method":na(prod.stockStorageMethod),"Date of Product Introduction":structure.useRounds?na(round.dateOfProductIntroduction):"NA","Date of Reading":na(reading.submittedAt),"Study Location":na(study.studyLocation),"Indoor / Outdoor":na(study.indoorOutdoor),"Container Type":na(study.containerType),"Water Volume":na(study.waterVolume),"Product":na(prod.product),"CR Number":na(prod.crNumber),"NB/Lot Number":na(prod.nbLotNumber),"Dose":na(prod.dose),"Dose Units":na(study.doseUnits),"Feeding Method":na(getVal("feedingMethod",round,reading,prod,rd,rep)),"Stress Test":na(getVal("stressTest",round,reading,prod,rd,rep)),"Mosquito Species":na(getVal("mosquitoSpecies",round,reading,prod,rd,rep)),"Larvae Instar":na(getVal("larvaeInstar",round,reading,prod,rd,rep)),"Week Number":structure.useWeeks?na(reading.weekNumber):"NA","Rep":rep,"Reading Interval":na(reading.readingInterval),"# Pupae":na(rd.pupae),"# Alive":na(rd.alive),"# Moribund":na(rd.moribund),"# Dead":na(rd.dead),"# Total":total||"NA","% Pupae":pct(pup,total),"% Alive":pct(alive,total),"% Moribund":pct(mor,total),"% Dead":pct(dead,total)});RAW_COLUMNS.forEach(c=>{const o=reviewOverrides[`${rid}|${c}`];if(o!==undefined)row[c]=o});rows.push(row)}})}));return rows}
+
+function exportColumns(){
+  let cols=[];
+  const required=(fieldSets&&fieldSets[activeFieldSet])||[];
+  required.filter(f=>f.exportCsv&&!f.archived).forEach(f=>{
+    let c=f.csv||f.label;
+    if(c&&!cols.includes(c))cols.push(c);
+  });
+  applied.filter(f=>f.exportCsv&&!f.archived).forEach(f=>{
+    let c=f.csv||f.label;
+    if(c&&!cols.includes(c))cols.push(c);
+  });
+  ["% Pupae","% Alive","% Moribund","% Dead"].forEach(c=>{if(!cols.includes(c))cols.push(c)});
+  RAW_COLUMNS.forEach(c=>{if(!cols.includes(c))cols.push(c)});
+  return cols;
+}
+function rawRows(){const rows=[];rounds.forEach(round=>round.readings.forEach(reading=>{ensureData(round,reading);round.products.forEach(prod=>{for(let rep=1;rep<=Number(prod.repCount||0);rep++){const rd=reading.data[prod.id][rep];const alive=num(rd.alive),mor=num(rd.moribund),dead=num(rd.dead),pup=num(rd.pupae),total=alive+mor+dead;const rid=`${round.id}|${reading.id}|${prod.id}|${rep}`;let row={_rowId:rid};RAW_COLUMNS.forEach(c=>row[c]="NA");Object.assign(row,{"Study Number":na(study.studyNumber),"Round of Testing":structure.useRounds?na(round.roundOfTesting):"NA","Date of Stock Prep":na(prod.dateOfStockPrep),"Stock Storage Method":na(prod.stockStorageMethod),"Date of Product Introduction":structure.useRounds?na(round.dateOfProductIntroduction):"NA","Date of Reading":na(reading.submittedAt),"Study Location":na(study.studyLocation),"Indoor / Outdoor":na(study.indoorOutdoor),"Container Type":na(study.containerType),"Water Volume":na(study.waterVolume),"Product":na(prod.product),"CR Number":na(prod.crNumber),"NB/Lot Number":na(prod.nbLotNumber),"Dose":na(prod.dose),"Dose Units":na(study.doseUnits),"Feeding Method":na(getVal("feedingMethod",round,reading,prod,rd,rep)),"Stress Test":na(getVal("stressTest",round,reading,prod,rd,rep)),"Mosquito Species":na(getVal("mosquitoSpecies",round,reading,prod,rd,rep)),"Larvae Instar":na(getVal("larvaeInstar",round,reading,prod,rd,rep)),"Week Number":structure.useWeeks?na(reading.weekNumber):"NA","Rep":rep,"Reading Interval":na(reading.readingInterval),"# Pupae":na(rd.pupae),"# Alive":na(rd.alive),"# Moribund":na(rd.moribund),"# Dead":na(rd.dead),"# Total":total||"NA","% Pupae":pct(pup,total),"% Alive":pct(alive,total),"% Moribund":pct(mor,total),"% Dead":pct(dead,total)});([...(fieldSets&&fieldSets[activeFieldSet]?fieldSets[activeFieldSet]:[]),...applied]).filter(f=>f.exportCsv&&!f.archived).forEach(f=>{let c=f.csv||f.label;if(row[c]===undefined||row[c]==="NA")row[c]=na(getVal(f.key,round,reading,prod,rd,rep,applied))});exportColumns().forEach(c=>{const o=reviewOverrides[`${rid}|${c}`];if(o!==undefined)row[c]=o;else row[c]=na(row[c])});rows.push(row)}})}));return rows}
 function renderAll(){renderDatalists();rounds.forEach(r=>r.readings.forEach(rd=>ensureData(r,rd)));renderSetup();renderTemplate();renderEntryNav();renderEntry();renderReview();renderHeader();renderExportHistory()}
-function renderHeader(){let sn=study.studyNumber||"_____";document.getElementById("studyNumberPreview").textContent=sn;document.getElementById("datasetName").value=`${sn==="_____"?"cup-assay":sn} Raw Data`;document.getElementById("exportFileName").value=`${sn==="_____"?"cup-assay":sn}-raw-data.csv`}
-function renderSetup(){document.getElementById("useRounds").checked=structure.useRounds;document.getElementById("useWeeks").checked=structure.useWeeks;document.getElementById("addRoundBtn").disabled=!structure.useRounds;document.getElementById("roundBlock").classList.toggle("hidden",!structure.useRounds);let sKeys=["studyNumber",...setupFields("Study").map(x=>x.key)];document.getElementById("studySetup").innerHTML=[...new Set(sKeys)].map(k=>{let sp=field(k);return `<div class="field"><label>${esc(sp.label)}</label>${inputFor(sp,study[k]||"",`setStudy('${k}',this.value)`)}</div>`}).join("");renderRoundPills();renderRoundSetup();renderProducts();renderReadings();document.getElementById("studyNotes").value=study.notes||""}
+function renderHeader(){
+  let sn=study.studyNumber||"_____";
+  let preview=document.getElementById("studyNumberPreview");
+  if(preview)preview.textContent=sn;
+  let dataset=document.getElementById("datasetName");
+  if(dataset)dataset.value=`${sn==="_____"?"cup-assay":sn} Raw Data`;
+  let exportName=document.getElementById("exportFileName");
+  if(exportName)exportName.value=`${sn==="_____"?"cup-assay":sn}-raw-data.csv`;
+  if(typeof updateContextBar==='function') updateContextBar();
+}
+function renderSetup(){document.getElementById("useRounds").checked=structure.useRounds;document.getElementById("useWeeks").checked=structure.useWeeks;document.getElementById("addRoundBtn").disabled=!structure.useRounds;let dupBtn=document.getElementById("duplicateRoundBtn");if(dupBtn)dupBtn.disabled=!structure.useRounds;document.getElementById("roundBlock").classList.toggle("hidden",!structure.useRounds);let sKeys=["studyNumber",...setupFields("Study").map(x=>x.key)];document.getElementById("studySetup").innerHTML=[...new Set(sKeys)].map(k=>{let sp=field(k);return `<div class="field"><label>${esc(sp.label)}</label>${inputFor(sp,study[k]||"",`setStudy('${k}',this.value)`)}</div>`}).join("");renderRoundPills();renderRoundSetup();renderProducts();renderReadings();document.getElementById("studyNotes").value=study.notes||""}
 function renderRoundPills(){let html=rounds.map(r=>`<button class="${r.id===activeRoundId?'active':'secondary'}" onclick="setRound('${r.id}')">${esc(r.roundOfTesting||'Round')}</button>`).join("");document.getElementById("roundPills").innerHTML=html;document.getElementById("entryRoundPills").innerHTML=structure.useRounds?html:""}
 function renderRoundSetup(){let r=getRound();document.getElementById("roundTitle").textContent=`${r.roundOfTesting||'Round'} Setup`;let keys=["roundOfTesting",...setupFields("Round").map(x=>x.key)];document.getElementById("roundSetup").innerHTML=[...new Set(keys)].map(k=>{let sp=field(k);return `<div class="field"><label>${esc(sp.label)}</label>${inputFor(sp,r[k]||"",`setRoundValue('${k}',this.value)`)}</div>`}).join("")}
-function renderProducts(){let r=getRound();let keys=["product","dose",...setupFields("Product").map(x=>x.key)];document.getElementById("productHead").innerHTML=[...new Set(keys)].map(k=>`<th>${esc(field(k).label)}</th>`).join("")+"<th>Reps</th><th>Remove</th>";document.getElementById("productBody").innerHTML=r.products.map(p=>`<tr>${[...new Set(keys)].map(k=>{let sp=field(k);return `<td>${inputFor(sp,p[k]||"",`setProduct('${p.id}','${k}',this.value)`)}</td>`}).join("")}<td><input type="number" min="1" value="${esc(p.repCount)}" onchange="setProduct('${p.id}','repCount',this.value)"></td><td><button class="danger small" onclick="removeProduct('${p.id}')">Remove</button></td></tr>`).join("")}
+function renderProducts(){
+  let r=getRound();
+  let keys=["product","dose",...setupFields("Product").map(x=>x.key)];
+  const unique=[...new Set(keys)];
+  document.getElementById("productHead").innerHTML=unique.map(k=>`<th>${esc(field(k).label)}</th>`).join("")+"<th>Reps</th><th>Remove</th>";
+  document.getElementById("productBody").innerHTML=r.products.map((p,rowIndex)=>`<tr>${unique.map((k,colIndex)=>{
+    let sp=field(k);
+    let html=inputFor(sp,p[k]||"",`setProduct('${p.id}','${k}',this.value)`);
+    return `<td>${addGridNavAttrs(html,'conditions',rowIndex,colIndex)}</td>`;
+  }).join("")}<td>${addGridNavAttrs(`<input type="number" min="1" value="${esc(p.repCount)}" onchange="setProduct('${p.id}','repCount',this.value)">`,'conditions',rowIndex,unique.length)}</td><td><button class="danger small" onclick="removeProduct('${p.id}')">Remove</button></td></tr>`).join("")
+}
 function renderReadings(){let r=getRound();let keys=[...(structure.useWeeks?["weekNumber"]:[]),"readingInterval",...setupFields("Week").map(x=>x.key),...setupFields("Reading").map(x=>x.key).filter(k=>k!=="dateOfReading")];document.getElementById("readingHead").innerHTML=[...new Set(keys)].map(k=>`<th>${esc(field(k).label)}</th>`).join("")+"<th>Status</th><th>Submitted At</th><th>Active</th><th>Remove</th>";document.getElementById("readingBody").innerHTML=r.readings.map(rd=>`<tr>${[...new Set(keys)].map(k=>{let sp=field(k);return `<td>${inputFor(sp,rd[k]||"",`setReading('${rd.id}','${k}',this.value)`,rd.locked)}</td>`}).join("")}<td><span class="badge ${rd.status==='Submitted'?'submitted':rd.status==='Editing Submitted'?'editing':'draft'}">${esc(rd.status)}</span></td><td>${esc(rd.submittedAt||'—')}</td><td><button class="${rd.id===activeReadingId?'primary':'secondary'} small" onclick="setActiveReading('${rd.id}')">${rd.id===activeReadingId?'Active':'Open'}</button></td><td><button class="danger small" ${rd.locked?'disabled':''} onclick="removeReading('${rd.id}')">Remove</button></td></tr>`).join("")}
-function renderTemplate(){document.getElementById("templateNameLabel").textContent=templateName;renderFieldManager();renderDropdownManager();renderPreview()}
-function renderFieldManager(){document.getElementById("fieldBody").innerHTML=draft.filter(x=>!x.archived).map(x=>`<tr><td class="field-name-cell"><strong>${esc(x.label)}</strong><span>Key: ${esc(x.key)}</span></td><td>${esc(x.csv||x.label)}</td><td><select ${x.locked?'disabled':''} onchange="templateSet('${x.key}','level',this.value)">${LEVELS.map(l=>`<option ${x.level===l?'selected':''}>${l}</option>`).join("")}</select></td><td><select ${x.locked?'disabled':''} onchange="templateSet('${x.key}','type',this.value)">${TYPES.map(t=>`<option ${x.type===t?'selected':''}>${t}</option>`).join("")}</select></td><td><select ${x.type!=='Dropdown'?'disabled':''} onchange="templateSet('${x.key}','lib',this.value)"><option value="" ${!x.lib?'selected':''}>None / NA</option>${activeLibraries().map(lib=>`<option ${x.lib===lib?'selected':''}>${esc(lib)}</option>`).join("")}</select></td><td class="center"><input type="checkbox" ${x.includeSetup?'checked':''} onchange="templateSet('${x.key}','includeSetup',this.checked)"></td><td class="center"><input type="checkbox" ${x.showSheet?'checked':''} ${x.locked?'disabled':''} onchange="templateSet('${x.key}','showSheet',this.checked)"></td><td class="center"><input type="checkbox" ${x.exportCsv?'checked':''} ${x.locked?'disabled':''} onchange="templateSet('${x.key}','exportCsv',this.checked)"></td><td><div class="template-actions"><button class="secondary small" ${x.locked?'disabled':''} onclick="editField('${x.key}')">Edit</button><button class="warning small" ${x.locked?'disabled':''} onclick="archiveField('${x.key}')">Archive</button></div></td></tr>`).join("")}
+function renderTemplate(){ensureTemplateMetaForAll();let label=document.getElementById("templateNameLabel");if(label)label.textContent=templateName;updateTemplateModeUi();renderTemplateLibrary();renderFieldManager();renderGroupBySelector();renderDropdownManager();renderSetupPreview();renderPreview();updateTemplateEditorVisibility()}
+
+const SHARED_TEMPLATE_NAMES=["Standard Cup Assay","Lot Comparison","Feeding Study","Extended Study","Adult Bioassay"];
+function isSharedTemplateName(name){return SHARED_TEMPLATE_NAMES.includes(name)}
+function openTemplateLibrary(){
+  templateEditorSource='library';
+  if(templates[templateName]){
+    draft=cloneTemplateObj(templates[templateName]);
+    setTemplateBaseline();
+  }
+  showTab('template');
+}
+function editStudyTemplate(){
+  if(!confirm('Open the template editor for this study? Changes affect future data entry/exports. New columns will export as NA for older rows.')) return;
+  templateEditorSource='study';
+  draft=cloneTemplateObj(applied);
+  setTemplateBaseline();
+  showTab('template');
+}
+function exitTemplateEditor(){ 
+  if(templateEditMode && !confirmLoseTemplateChanges()) return;
+  templateEditMode=false;
+  templateDirty=false;
+  if(templateEditorSource==='study') showTab('setup'); else showTab('home'); 
+}
+function applyTemplateToCurrentStudy(){applyTemplate();appliedGroupBy=draftGroupBy;setTemplateBaseline();showTab('setup');}
+function updateTemplateModeUi(){
+  const tabs=document.querySelector('.tabs');
+  const inTemplateLibrary = currentTab==='template' && templateEditorSource==='library';
+  if(tabs) tabs.classList.toggle('template-library-mode', inTemplateLibrary);
+
+  const headerButtons=document.querySelector('header.top > .row');
+  if(headerButtons) headerButtons.classList.toggle('hidden', currentTab==='template');
+
+  const back=document.getElementById('templateBackButton');
+  if(back) back.textContent=templateEditorSource==='study'?'Back to Study Setup':'Back Home';
+
+  const txt=document.getElementById('templateModeText');
+  if(txt) txt.textContent=templateEditorSource==='study'
+    ? 'Editing the template attached to the current study. Save changes to apply them to future data entry/exports.'
+    : 'Choose, preview, duplicate, or edit templates before starting a study.';
+
+  const apply=document.getElementById('templateApplyButton');
+  if(apply) apply.classList.toggle('hidden', templateEditorSource!=='study');
+
+  updateTemplateStatusBanner();
+}
+
+function cloneTemplateObj(obj){ return JSON.parse(JSON.stringify(obj||[])); }
+function setTemplateBaseline(){ templateBaseline=cloneTemplateObj(draft); templateDirty=false; updateTemplateStatusBanner(); }
+function markTemplateDirty(){ templateDirty=true; updateTemplateStatusBanner(); }
+function updateTemplateStatusBanner(){
+  const banner=document.getElementById('templateStatusBanner');
+  if(!banner) return;
+  const locked=isSharedTemplateName(templateName);
+  banner.classList.toggle('unsaved', !!templateDirty);
+  banner.innerHTML=`Currently Editing: <b id="currentTemplateName">${esc(templateName||'Template')}</b> • ${locked?'Shared locked template':'Custom template'} • ${templateDirty?'Unsaved Changes':'Saved'}`;
+}
+function confirmLoseTemplateChanges(){
+  if(!templateDirty) return true;
+  return confirm('You have unsaved template changes. If you leave this page, those changes will not be saved. Continue without saving?');
+}
+function saveTemplateChanges(){
+  if(isSharedTemplateName(templateName)){
+    alert('Shared templates are locked. Use "Save As New Template" to create an editable custom copy.');
+    return;
+  }
+  if(!templateName){
+    saveTemplateAsNew();
+    return;
+  }
+  if(!confirm(`Save changes to custom template "${templateName}"?`)) return;
+  templates[templateName]=cloneTemplateObj(draft);
+  setTemplateStudyType(templateName,activeFieldSet);
+  if(typeof setTemplateMeta==='function') setTemplateMeta(templateName,{...(getTemplateMeta(templateName)||{}),groupBy:draftGroupBy||"",fieldSet:activeFieldSet,studyType:activeFieldSet});
+  localStorage.setItem('cupAssayTemplates',JSON.stringify(templates));
+  setTemplateBaseline();
+  alert(`Saved changes to ${templateName}.`);
+  exitTemplateEditMode();
+  renderAll();
+}
+function saveTemplateAsNew(){
+  const suggested=(templateName && !isSharedTemplateName(templateName)) ? templateName+' Copy' : (templateName||'New Template')+' Custom';
+  const n=prompt('New custom template name?', suggested);
+  if(!n) return;
+  if(templates[n] && !confirm(`Template "${n}" already exists. Overwrite it?`)) return;
+  templateName=n;
+  templates[n]=cloneTemplateObj(draft);
+  setTemplateStudyType(n,activeFieldSet);
+  if(typeof setTemplateMeta==='function') setTemplateMeta(n,{...(getTemplateMeta(n)||{}),groupBy:draftGroupBy||"",fieldSet:activeFieldSet,studyType:activeFieldSet});
+  localStorage.setItem('cupAssayTemplates',JSON.stringify(templates));
+  setTemplateBaseline();
+  alert(`Saved new custom template: ${n}`);
+  exitTemplateEditMode();
+  renderAll();
+}
+function undoTemplateChanges(){
+  if(!templateDirty) return alert('No unsaved template changes to undo.');
+  if(!confirm('Undo all unsaved changes to this template?')) return;
+  if(templateBaseline) draft=cloneTemplateObj(templateBaseline);
+  else if(templates[templateName]) draft=cloneTemplateObj(templates[templateName]);
+  templateDirty=false;
+  renderAll();
+}
+
+
+function getTemplateMeta(name){ return templateMeta[name] || {groupBy:""}; }
+function setTemplateMeta(name,meta){ templateMeta[name]={...(templateMeta[name]||{}),...(meta||{})}; localStorage.setItem('cupAssayTemplateMeta',JSON.stringify(templateMeta)); }
+function groupByOptions(){ return draft.filter(f=>!f.archived && f.level==='Product' && f.key!=='product' && f.key!=='dose').map(f=>({key:f.key,label:f.label})); }
+function setDataSheetGroupBy(key){ draftGroupBy=key||""; markTemplateDirty(); renderAll(); }
+function renderGroupBySelector(){ const sel=document.getElementById('dataSheetGroupBySelect'); if(!sel)return; const opts=groupByOptions(); sel.innerHTML=`<option value="" ${!draftGroupBy?'selected':''}>None</option>`+opts.map(o=>`<option value="${esc(o.key)}" ${draftGroupBy===o.key?'selected':''}>${esc(o.label)}</option>`).join(''); }
+
+
+function inferFieldSetForTemplate(name){
+  if((name||"").toLowerCase().includes("dose response")) return "Larvicide Dose Response";
+  return "Larvicide Bioassay";
+}
+function currentFieldSet(){
+  return activeFieldSet || inferFieldSetForTemplate(templateName);
+}
+function setTemplateFieldSet(value){
+  if(templateEditMode){
+    const sel=document.getElementById("fieldSetSelect");
+    if(sel) sel.value=activeFieldSet;
+    alert("Study Type is locked while editing a template. Save or cancel editing before switching Study Types.");
+    return;
+  }
+  activeFieldSet=value || "Larvicide Bioassay";
+  templateName="";
+  draft=[];
+  templateDirty=false;
+  updateContextBar();
+  renderTemplateLibrary();
+  updateTemplateEditorVisibility();
+}
+function showTemplateAppliedBanner(name){
+  const b=document.getElementById("templateAppliedBanner");
+  if(!b) return;
+  b.textContent=`✓ Template Applied: ${name}`;
+  b.classList.remove("hidden");
+  setTimeout(()=>b.classList.add("hidden"),3500);
+}
+function renderFieldSetSelectOptions(){
+  const sel=document.getElementById("fieldSetSelect");
+  if(!sel) return;
+  ensureFieldSets();
+  const names=Object.keys(fieldSets).sort((a,b)=>a.localeCompare(b));
+  sel.innerHTML=names.map(n=>`<option value="${esc(n)}" ${n===activeFieldSet?'selected':''}>${esc(n)}</option>`).join("");
+}
+function updateContextBar(){
+  const set=(id,val)=>{const el=document.getElementById(id); if(el) el.textContent=val;};
+  set("ctxStudy", study.studyNumber || "Not started");
+  set("ctxTemplate", templateName || "None");
+  set("ctxFieldSet", currentFieldSet());
+  set("ctxStudyFile", studyFileName || "Not saved");
+  set("ctxVersion", typeof versionLabel==="function" ? versionLabel() : "v001");
+  const title=document.getElementById("entrySheetTitle");
+  if(title) title.textContent=templateName || "Bioassay Data Sheet";
+  renderFieldSetSelectOptions();
+  const fs=document.getElementById("fieldSetSelect");
+  if(fs) fs.value=currentFieldSet();
+}
+
+
+function ensureFieldSets(){
+  if(!fieldSets || !Object.keys(fieldSets).length){
+    fieldSets={
+      "Larvicide Bioassay": cloneTemplateObj((templates&&templates["Cup Study Single Dose Comparison "]) || (templates&&templates["Cup Study Single Dose Comparison"]) || draft || BASE),
+      "Larvicide Dose Response": cloneTemplateObj((templates&&templates["Larvicide Dose Response"]) || draft || BASE)
+    };
+    localStorage.setItem('cupAssayFieldSets',JSON.stringify(fieldSets));
+  }
+  ["Larvicide Bioassay","Larvicide Dose Response"].forEach(name=>{
+    if(!fieldSets[name]) fieldSets[name]=cloneTemplateObj(draft||BASE);
+  });
+}
+function persistFieldSets(){ localStorage.setItem('cupAssayFieldSets',JSON.stringify(fieldSets)); }
+function openFieldSetManager(){
+  ensureFieldSets();
+  activeFieldSetManager=activeFieldSet||Object.keys(fieldSets)[0]||"Larvicide Bioassay";
+  renderFieldSetManager();
+  const panel=document.getElementById('fieldSetModal');
+  if(panel){panel.classList.remove('hidden');panel.scrollIntoView({behavior:'smooth',block:'start'});}
+}
+function closeFieldSetManager(){
+  document.getElementById('fieldSetModal')?.classList.add('hidden');
+}
+function renderFieldSetManager(){
+  ensureFieldSets();
+  const names=Object.keys(fieldSets).sort((a,b)=>a.localeCompare(b));
+  const list=document.getElementById('fieldSetList');
+  if(list) list.innerHTML=names.map(n=>`<div class="fieldset-item ${n===activeFieldSetManager?'active':''}"><button class="${n===activeFieldSetManager?'dark':'secondary'} small" onclick="selectFieldSetForEditing('${esc(n)}')">${esc(n)}</button><span class="archived-note">${(fieldSets[n]||[]).filter(f=>!f.archived).length} fields</span></div>`).join("");
+  const title=document.getElementById('activeFieldSetTitle');
+  if(title) title.textContent=`Field Library: ${activeFieldSetManager}`;
+  renderFieldSetFields();
+}
+function selectFieldSetForEditing(name){
+  activeFieldSetManager=name;
+  renderFieldSetManager();
+}
+function renderFieldSetFields(){
+  const body=document.getElementById('fieldSetFieldBody'); if(!body) return;
+  const mandatory=appMandatoryKeys();
+  const fields=(fieldSets[activeFieldSetManager]||[]).filter(f=>!f.archived);
+  body.innerHTML=fields.map((f,idx)=>{
+    const realIndex=(fieldSets[activeFieldSetManager]||[]).findIndex(x=>x.key===f.key);
+    const protectedField=mandatory.has(f.key);
+    return `<tr><td><div class="row"><button class="secondary small" ${realIndex<=0?'disabled':''} onclick="moveFieldSetField('${f.key}',-1)">▲</button><button class="secondary small" ${realIndex>=(fieldSets[activeFieldSetManager]||[]).length-1?'disabled':''} onclick="moveFieldSetField('${f.key}',1)">▼</button></div></td><td class="field-name-cell"><strong>${esc(f.label)}${protectedField?'<span class="required-field-badge">APP REQUIRED</span>':''}</strong><span>Key: ${esc(f.key)}</span></td><td>${esc(f.csv||f.label)}</td><td><select ${protectedField?'disabled':''} onchange="fieldSetSet('${f.key}','level',this.value)">${LEVELS.map(l=>`<option ${f.level===l?'selected':''}>${l}</option>`).join("")}</select></td><td><select ${protectedField?'disabled':''} onchange="fieldSetSet('${f.key}','type',this.value)">${TYPES.map(t=>`<option ${f.type===t?'selected':''}>${t}</option>`).join("")}</select></td><td><select ${f.type!=='Dropdown'?'disabled':''} onchange="fieldSetSet('${f.key}','lib',this.value)"><option value="" ${!f.lib?'selected':''}>None / NA</option>${activeLibraries().map(lib=>`<option ${f.lib===lib?'selected':''}>${esc(lib)}</option>`).join("")}</select></td><td><input type="checkbox" ${f.includeSetup?'checked':''} onchange="fieldSetSet('${f.key}','includeSetup',this.checked)"></td><td><input type="checkbox" ${f.showSheet?'checked':''} ${protectedField&&f.key==='rep'?'disabled':''} onchange="fieldSetSet('${f.key}','showSheet',this.checked)"></td><td><input type="checkbox" ${f.exportCsv?'checked':''} ${protectedField?'disabled':''} onchange="fieldSetSet('${f.key}','exportCsv',this.checked)"></td><td><div class="template-actions"><button class="secondary small" ${protectedField?'disabled':''} onclick="editFieldSetField('${f.key}')">Edit</button><button class="warning small" ${protectedField?'disabled':''} onclick="archiveFieldSetField('${f.key}')">Remove</button></div></td></tr>`;
+  }).join("") || `<tr><td colspan="10" class="muted">No fields in this study type.</td></tr>`;
+}
+function fieldSetSet(key,prop,val){
+  fieldSets[activeFieldSetManager]=(fieldSets[activeFieldSetManager]||[]).map(f=>f.key===key?{...f,[prop]:val}:f);
+  renderFieldSetFields();
+}
+function moveFieldSetField(key,direction){
+  const arr=fieldSets[activeFieldSetManager]||[];
+  let i=arr.findIndex(f=>f.key===key), j=i+direction;
+  if(i<0||j<0||j>=arr.length) return;
+  const item=arr.splice(i,1)[0]; arr.splice(j,0,item);
+  fieldSets[activeFieldSetManager]=arr;
+  renderFieldSetFields();
+}
+function addFieldSet(){
+  const name=prompt("New study type name?","New Study Type");
+  if(!name) return;
+  if(fieldSets[name] && !confirm("Field set already exists. Replace it?")) return;
+  fieldSets[name]=cloneTemplateObj(draft||BASE);
+  activeFieldSetManager=name;
+  persistFieldSets();
+  renderFieldSetManager();
+}
+function renameFieldSet(){
+  const old=activeFieldSetManager;
+  const name=prompt("Rename study type:",old);
+  if(!name||name===old) return;
+  if(fieldSets[name]) return alert("That study type already exists.");
+  fieldSets[name]=fieldSets[old]; delete fieldSets[old];
+  if(activeFieldSet===old) activeFieldSet=name;
+  activeFieldSetManager=name;
+  persistFieldSets();
+  renderFieldSetManager();
+  updateContextBar();
+}
+function addFieldToFieldSet(){
+  const label=prompt("Field name?");
+  if(!label) return;
+  const key=label.trim().replace(/[^a-zA-Z0-9]+(.)/g,(_,c)=>c.toUpperCase()).replace(/[^a-zA-Z0-9]/g,"");
+  const arr=fieldSets[activeFieldSetManager]||[];
+  if(arr.some(f=>f.key===key)) return alert("That field already exists in this study type.");
+  arr.push(F(key,label,"Study",true,true,false));
+  fieldSets[activeFieldSetManager]=arr;
+  renderFieldSetFields();
+}
+function editFieldSetField(key){
+  const arr=fieldSets[activeFieldSetManager]||[];
+  const f=arr.find(x=>x.key===key);
+  if(!f||f.locked) return;
+  const label=prompt("Field display name:",f.label);
+  if(!label) return;
+  const csv=prompt("CSV header:",f.csv||f.label);
+  if(!csv) return;
+  fieldSets[activeFieldSetManager]=arr.map(x=>x.key===key?{...x,label,csv}:x);
+  renderFieldSetFields();
+}
+function archiveFieldSetField(key){
+  const arr=fieldSets[activeFieldSetManager]||[];
+  const f=arr.find(x=>x.key===key);
+  if(!f) return;
+  if(appMandatoryKeys().has(key)) return alert("This field is required for the app to work and cannot be removed.");
+  if(!confirm("Remove this field from the study type? Existing templates are not changed until you apply the study type.")) return;
+  fieldSets[activeFieldSetManager]=arr.map(x=>x.key===key?{...x,archived:true,showSheet:false,includeSetup:false,exportCsv:false}:x);
+  renderFieldSetFields();
+}
+function saveActiveFieldSet(){
+  persistFieldSets();
+  alert(`Saved study type: ${activeFieldSetManager}`);
+}
+function applyActiveFieldSetToTemplate(){
+  if(!confirm(`Apply study type "${activeFieldSetManager}" to the current template? Required fields will be updated/added, but template-specific fields will be kept.`)) return;
+  activeFieldSet=activeFieldSetManager;
+  const required=cloneTemplateObj(fieldSets[activeFieldSetManager]||[]);
+  const reqKeys=new Set(required.map(f=>f.key));
+  const existingByKey=new Map((draft||[]).map(f=>[f.key,f]));
+  const merged=[];
+  required.forEach(req=>{
+    const existing=existingByKey.get(req.key);
+    if(existing){
+      merged.push({...req, includeSetup:existing.includeSetup, showSheet:existing.showSheet, exportCsv:existing.exportCsv, archived:false});
+    }else{
+      merged.push({...req, includeSetup:false, showSheet:false, exportCsv:true, archived:false});
+    }
+  });
+  (draft||[]).forEach(f=>{
+    if(!reqKeys.has(f.key)) merged.push(f);
+  });
+  draft=merged;
+  if(typeof setTemplateMeta==='function') setTemplateMeta(templateName,{...(getTemplateMeta(templateName)||{}),fieldSet:activeFieldSet});
+  if(typeof markTemplateDirty==='function') markTemplateDirty();
+  renderAll();
+  closeFieldSetManager();
+}
+
+
+function requiredStudyTypeKeys(){
+  const arr=(fieldSets&&fieldSets[activeFieldSet]) || [];
+  return new Set(arr.filter(f=>!f.archived).map(f=>f.key));
+}
+function appMandatoryKeys(){
+  return new Set(["studyNumber","roundOfTesting","weekNumber","readingInterval","rep"]);
+}
+function isTemplateSpecificField(f){
+  return !requiredStudyTypeKeys().has(f.key);
+}
+function ensureRequiredFieldsInTemplate(){
+  ensureFieldSets();
+  const required=(fieldSets&&fieldSets[activeFieldSet]) || [];
+  const existing=new Map((draft||[]).map(f=>[f.key,f]));
+  const reqKeys=new Set(required.filter(f=>!f.archived).map(f=>f.key));
+  const ordered=[];
+  required.filter(f=>!f.archived).forEach(req=>{
+    const existingField=existing.get(req.key);
+    if(existingField){
+      ordered.push(existingField);
+    }else{
+      ordered.push({...req, includeSetup:false, showSheet:false, exportCsv:true});
+    }
+  });
+  (draft||[]).forEach(f=>{
+    if(!reqKeys.has(f.key)) ordered.push(f);
+  });
+  draft=ordered;
+}
+
+
+function enterTemplateEditMode(){
+  templateEditMode=true;
+  updateTemplateEditorVisibility();
+}
+function exitTemplateEditMode(){
+  templateEditMode=false;
+  templateDirty=false;
+  updateTemplateEditorVisibility();
+  renderTemplateLibrary();
+}
+function updateTemplateEditorVisibility(){
+  const editing=!!templateEditMode;
+  const fieldSetSelect=document.getElementById('fieldSetSelect');
+  if(fieldSetSelect) fieldSetSelect.disabled=editing;
+  const lock=document.getElementById('studyTypeLockedNote');
+  if(lock) lock.classList.toggle('hidden', !editing);
+
+  const banner=document.getElementById('editorModeBanner');
+  if(banner){
+    banner.classList.toggle('hidden', !editing);
+    banner.classList.toggle('unsaved', !!templateDirty);
+    banner.innerHTML=editing ? `Currently Editing — Study Type: <b>${esc(currentFieldSet())}</b> 🔒 &nbsp; Template: <b>${esc(templateName||'Template')}</b> &nbsp; Status: <b>${templateDirty?'Unsaved Changes':'Saved'}</b>` : '';
+  }
+
+  const status=document.getElementById('templateStatusBanner');
+  if(status) status.classList.toggle('hidden', !editing);
+
+  const fieldBody=document.getElementById('fieldBody');
+  const fieldBox=fieldBody?.closest('.box');
+  if(fieldBox) fieldBox.classList.toggle('hidden', !editing);
+
+  const setupPreview=document.getElementById('setupPreview');
+  const setupBox=setupPreview?.closest('.box');
+  if(setupBox) setupBox.classList.toggle('hidden', !editing);
+
+  const previewHead=document.getElementById('previewHead');
+  const previewBox=previewHead?.closest('.box');
+  if(previewBox) previewBox.classList.toggle('hidden', !editing);
+
+  const gb=document.getElementById('dataSheetGroupBySelect');
+  const gbBox=gb?.closest('.callout');
+  if(gbBox) gbBox.classList.toggle('hidden', !editing);
+}
+function cancelTemplateEditing(){
+  if(templateDirty && !confirm('Discard unsaved template changes and return to browse mode?')) return;
+  if(templateBaseline) draft=cloneTemplateObj(templateBaseline);
+  templateDirty=false;
+  exitTemplateEditMode();
+  renderAll();
+}
+
+
+function templateStudyType(name){
+  const meta=(typeof getTemplateMeta==='function') ? (getTemplateMeta(name)||{}) : {};
+  return meta.studyType || meta.fieldSet || inferFieldSetForTemplate(name);
+}
+function setTemplateStudyType(name,studyType){
+  if(typeof setTemplateMeta==='function'){
+    setTemplateMeta(name,{...(getTemplateMeta(name)||{}),fieldSet:studyType,studyType:studyType});
+  }
+}
+function ensureTemplateMetaForAll(){
+  if(typeof templateMeta==='undefined') return;
+  Object.keys(templates||{}).forEach(name=>{
+    const meta=getTemplateMeta(name)||{};
+    if(!meta.fieldSet && !meta.studyType){
+      setTemplateStudyType(name,inferFieldSetForTemplate(name));
+    } else if(meta.fieldSet && !meta.studyType){
+      setTemplateStudyType(name,meta.fieldSet);
+    } else if(meta.studyType && !meta.fieldSet){
+      setTemplateStudyType(name,meta.studyType);
+    }
+  });
+}
+
+function renderTemplateLibrary(){
+  ensureTemplateMetaForAll();
+  const box=document.getElementById('templateLibraryList'); if(!box) return;
+  const selectedStudyType=currentFieldSet();
+  let names=Object.keys(templates).filter(name=>templateStudyType(name)===selectedStudyType).sort((a,b)=>a.localeCompare(b));
+  box.innerHTML=names.map(name=>{
+    const locked=isSharedTemplateName(name);
+    const selected=templateEditMode && name===templateName;
+    const meta=getTemplateMeta(name);
+    const selectedActions=selected ? `<div class="selected-actions"><button class="primary small" onclick="saveTemplateChanges()">Save Changes</button><button class="secondary small" onclick="saveTemplateAsNew()">Save As New Template</button><button class="warning small" onclick="undoTemplateChanges()">Undo Changes</button><button class="secondary small" onclick="cancelTemplateEditing()">Cancel Editing</button></div>` : "";
+    return `<div class="template-card ${locked?'locked':''} ${selected?'selected-template':''}"><div class="section"><div><h3>${esc(name)}</h3><p class="muted">${selected?'Currently editing • ':''}${locked?'Shared locked template':'Custom editable template'} • Study Type: ${esc(templateStudyType(name))}${meta.groupBy?' • Grouped by '+esc((templates[name]||[]).find(f=>f.key===meta.groupBy)?.label||meta.groupBy):''}</p></div><span class="tag">${selected?'EDITING':(locked?'LOCKED':'CUSTOM')}</span></div><div class="row"><button class="primary small" onclick="useTemplateFromLibrary('${esc(name)}')">Use</button><button class="secondary small" onclick="previewTemplateFromLibrary('${esc(name)}')">${locked?'Preview':'Edit'}</button><button class="secondary small" onclick="duplicateTemplateFromLibrary('${esc(name)}')">Duplicate</button>${locked?'':`<button class="warning small" onclick="archiveTemplateFromLibrary('${esc(name)}')">Remove</button>`}</div>${selectedActions}</div>`;
+  }).join('') || `<p class="muted">No templates saved for ${esc(selectedStudyType)} yet. Use New Custom Template or duplicate a template from another study type.</p>`;
+  updateTemplateEditorVisibility();
+}
+function useTemplateFromLibrary(name){
+  if(!templates[name]) return;
+  if(templateEditMode && !confirmLoseTemplateChanges()) return;
+  templateName=name;
+  activeFieldSet=templateStudyType(name);
+  draft=cloneTemplateObj(templates[name]);
+  applied=cloneTemplateObj(draft);
+  if(typeof getTemplateMeta==="function"){
+    draftGroupBy=getTemplateMeta(name).groupBy||"";
+    appliedGroupBy=draftGroupBy;
+  }
+  setTemplateBaseline();
+  templateEditMode=false;
+  renderAll();
+  showTemplateAppliedBanner(name);
+  alert(`Template applied: ${name}`);
+}
+function previewTemplateFromLibrary(name){
+  if(!templates[name]) return;
+  if(templateEditMode && !confirmLoseTemplateChanges()) return;
+  templateName=name;
+  activeFieldSet=templateStudyType(name);
+  draft=cloneTemplateObj(templates[name]);
+  draftGroupBy=getTemplateMeta(name).groupBy||"";
+  normalizeTemplateOrderToStudyType();
+  setTemplateBaseline();
+  enterTemplateEditMode();
+  renderAll();
+  document.getElementById('editorModeBanner')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function duplicateTemplateFromLibrary(name){
+  if(!templates[name]) return;
+  if(templateEditMode && !confirmLoseTemplateChanges()) return;
+  const newName=prompt('Name for duplicated custom template?', name+' Custom');
+  if(!newName) return;
+  const targetStudyType=currentFieldSet();
+  templates[newName]=cloneTemplateObj(templates[name]);
+  if(typeof setTemplateMeta==='function') setTemplateStudyType(newName,targetStudyType);
+  if(typeof setTemplateMeta==='function') setTemplateMeta(newName,{...(getTemplateMeta(newName)||{}),groupBy:getTemplateMeta(name).groupBy||"",fieldSet:targetStudyType,studyType:targetStudyType});
+  templateName=newName;
+  activeFieldSet=targetStudyType;
+  draft=cloneTemplateObj(templates[newName]);
+  draftGroupBy=getTemplateMeta(newName).groupBy||"";
+  localStorage.setItem('cupAssayTemplates',JSON.stringify(templates));
+  setTemplateBaseline();
+  enterTemplateEditMode();
+  renderAll();
+}
+function archiveTemplateFromLibrary(name){
+  if(isSharedTemplateName(name)) return alert('Shared templates are locked. Duplicate it first.');
+  if(!confirm(`Remove custom template "${name}"?`)) return;
+  delete templates[name];
+  if(templateMeta && templateMeta[name]) delete templateMeta[name];
+  localStorage.setItem('cupAssayTemplates',JSON.stringify(templates));
+  localStorage.setItem('cupAssayTemplateMeta',JSON.stringify(templateMeta||{}));
+  if(templateName===name){templateName=""; draft=[]; templateEditMode=false; templateDirty=false;}
+  renderAll();
+}
+function openDropdownModal(){document.getElementById('dropdownModal')?.classList.remove('hidden');renderDropdownManager();}
+function closeDropdownModal(){document.getElementById('dropdownModal')?.classList.add('hidden');}
+
+function orderedDraftForActiveStudyType(){
+  ensureRequiredFieldsInTemplate();
+  const required=(fieldSets&&fieldSets[activeFieldSet]) || [];
+  const reqOrder=new Map(required.filter(f=>!f.archived).map((f,i)=>[f.key,i]));
+  const active=draft.filter(f=>!f.archived);
+  return active.slice().sort((a,b)=>{
+    const ai=reqOrder.has(a.key)?reqOrder.get(a.key):9999 + draft.findIndex(x=>x.key===a.key);
+    const bi=reqOrder.has(b.key)?reqOrder.get(b.key):9999 + draft.findIndex(x=>x.key===b.key);
+    return ai-bi;
+  });
+}
+function normalizeTemplateOrderToStudyType(){
+  ensureRequiredFieldsInTemplate();
+  const ordered=orderedDraftForActiveStudyType();
+  const archived=draft.filter(f=>f.archived);
+  draft=[...ordered,...archived];
+}
+
+function renderFieldManager(){
+  normalizeTemplateOrderToStudyType();
+  let active=draft.filter(x=>!x.archived);
+  const required=requiredStudyTypeKeys();
+  document.getElementById("fieldBody").innerHTML=active.map((x,visibleIndex)=>{
+    let realIndex=draft.findIndex(f=>f.key===x.key);
+    const requiredField=required.has(x.key);
+    const templateSpecific=!requiredField;
+    const canEditCoreProps = !x.locked || templateSpecific;
+    const canRemove = templateSpecific;
+    return `<tr><td><div class="row"><button class="secondary small" ${realIndex<=0?'disabled':''} onclick="moveField('${x.key}',-1)">▲</button><button class="secondary small" ${realIndex>=draft.length-1?'disabled':''} onclick="moveField('${x.key}',1)">▼</button></div></td><td class="field-name-cell"><strong>${esc(x.label)}${requiredField?'<span class="required-field-badge">STUDY TYPE</span>':'<span class="template-field-badge">TEMPLATE ONLY</span>'}</strong><span>Key: ${esc(x.key)}</span></td><td>${esc(x.csv||x.label)}</td><td><select ${canEditCoreProps?'':'disabled'} onchange="templateSet('${x.key}','level',this.value)">${LEVELS.map(l=>`<option ${x.level===l?'selected':''}>${l}</option>`).join("")}</select></td><td><select ${canEditCoreProps?'':'disabled'} onchange="templateSet('${x.key}','type',this.value)">${TYPES.map(t=>`<option ${x.type===t?'selected':''}>${t}</option>`).join("")}</select></td><td><select ${x.type!=='Dropdown'?'disabled':''} onchange="templateSet('${x.key}','lib',this.value)"><option value="" ${!x.lib?'selected':''}>None / NA</option>${activeLibraries().map(lib=>`<option ${x.lib===lib?'selected':''}>${esc(lib)}</option>`).join("")}</select></td><td class="center"><input type="checkbox" ${x.includeSetup?'checked':''} onchange="templateSet('${x.key}','includeSetup',this.checked)"></td><td class="center"><input type="checkbox" ${x.showSheet?'checked':''} ${x.locked&&requiredField?'disabled':''} onchange="templateSet('${x.key}','showSheet',this.checked)"></td><td class="center"><input type="checkbox" ${x.exportCsv?'checked':''} ${x.locked&&requiredField?'disabled':''} onchange="templateSet('${x.key}','exportCsv',this.checked)"></td><td><div class="template-actions"><button class="secondary small" ${canEditCoreProps?'':'disabled'} onclick="editField('${x.key}')">Edit</button><button class="warning small" ${canRemove?'':'disabled'} onclick="archiveField('${x.key}')">${requiredField?'Required':'Remove'}</button></div></td></tr>`;
+  }).join("")
+}
 function renderDropdownManager(){
  const libs=activeLibraries(); if(!activeDropdownLibrary||!dropdowns[activeDropdownLibrary]||dropdowns[activeDropdownLibrary].archivedLibrary) activeDropdownLibrary=libs[0]||"";
  const libBox=document.getElementById("dropdownLibraries"); if(!libBox)return;
  libBox.innerHTML=libs.map(lib=>`<div class="library-item ${lib===activeDropdownLibrary?'active':''}"><button class="${lib===activeDropdownLibrary?'dark':'secondary'} small" onclick="selectDropdownLibrary('${esc(lib)}')">${esc(lib)}</button><span class="archived-note">${activeOptions(lib).length} options</span></div>`).join("")||`<p class="muted">No active libraries.</p>`;
  document.getElementById("selectedDropdownTitle").textContent=activeDropdownLibrary||"No Library Selected";
  document.getElementById("selectedDropdownMeta").textContent=activeDropdownLibrary?`${activeOptions(activeDropdownLibrary).length} active, ${archivedOptions(activeDropdownLibrary).length} archived`:"Create a library to start.";
- document.getElementById("dropdownOptions").innerHTML=activeDropdownLibrary?activeOptions(activeDropdownLibrary).map(o=>`<div class="option-item"><span>${esc(o)}</span><div class="row"><button class="secondary small" onclick="editDropdownOption('${esc(o)}')">Edit</button><button class="warning small" onclick="archiveDropdownOption('${esc(o)}')">Archive</button></div></div>`).join("")||`<p class="muted">No active options.</p>`:"";
+ document.getElementById("dropdownOptions").innerHTML=activeDropdownLibrary?activeOptions(activeDropdownLibrary).map(o=>`<div class="option-item"><span>${esc(o)}</span><div class="row"><button class="secondary small" onclick="editDropdownOption('${esc(o)}')">Edit</button><button class="warning small" onclick="archiveDropdownOption('${esc(o)}')">Remove</button></div></div>`).join("")||`<p class="muted">No active options.</p>`:"";
  document.getElementById("archivedDropdownOptions").innerHTML=activeDropdownLibrary?archivedOptions(activeDropdownLibrary).map(o=>`<div class="option-item"><span>${esc(o)}</span><span class="archived-note">Archived</span></div>`).join("")||`<p class="muted">No archived options.</p>`:"";
 }
-function renderPreview(){let cols=showFields(draft);document.getElementById("visibleChips").innerHTML=cols.map(c=>`<span class="chip"><b>${esc(c.label)}</b><span>${esc(c.level)}</span></span>`).join("");document.getElementById("previewHead").innerHTML=`<tr>${cols.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr>`;let products=[{product:"Product A",dose:"0.1",nbLotNumber:"Lot-A",crNumber:"CR-101",repCount:4},{product:"Product A",dose:"0.1",nbLotNumber:"Lot-B",crNumber:"CR-101",repCount:4}],rows=[];products.forEach(p=>{for(let rep=1;rep<=4;rep++){let rd={pupae:rep===1?"1":"0",alive:"8",moribund:"1",dead:"1",notes:""};rows.push(`<tr class="${rep===1?'new-product':''}">${cols.map(c=>demoCell(c,p,rep,rd)).join("")}</tr>`)}});document.getElementById("previewBody").innerHTML=rows.join("")}
+
+function renderSetupPreview(){
+ const box=document.getElementById('setupPreview'); if(!box) return;
+ const group=(title,fields)=>`<div class="preview-list"><h4>${title}</h4><ul>${fields.length?fields.map(f=>`<li>${esc(f.label)} <span class="muted">(${esc(f.level)})</span></li>`).join(''):'<li class="muted">No fields</li>'}</ul></div>`;
+ const active=draft.filter(f=>!f.archived && f.includeSetup);
+ box.innerHTML=group('Study Setup', active.filter(f=>f.level==='Study'))+
+               group('Round Setup', active.filter(f=>f.level==='Round'))+
+               group('Treatment / Condition Setup', active.filter(f=>f.level==='Product'))+
+               group('Reading Schedule', active.filter(f=>['Week','Reading'].includes(f.level)));
+}
+function renderPreview(){let cols=showFields(draft);document.getElementById("visibleChips").innerHTML=cols.map((c,i)=>`<span class="chip"><button class="secondary mini" ${i===0?'disabled':''} onclick="moveVisibleField('${c.key}',-1)">◀</button><b>${esc(c.label)}</b><span>${esc(c.level)}</span><button class="secondary mini" ${i===cols.length-1?'disabled':''} onclick="moveVisibleField('${c.key}',1)">▶</button></span>`).join("");document.getElementById("previewHead").innerHTML=`<tr>${cols.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr>`;let products=[{product:"Product A",dose:"0.1",nbLotNumber:"Lot-A",crNumber:"CR-101",mosquitoSpecies:"Aedes aegypti ORL",containerType:"Cup",repCount:4},{product:"Product A",dose:"0.1",nbLotNumber:"Lot-B",crNumber:"CR-101",mosquitoSpecies:"Aedes albopictus",containerType:"Cup",repCount:4}],rows=[],lastGroup=null,colspan=Math.max(cols.length,1);products.forEach(p=>{const groupVal=draftGroupBy?(p[draftGroupBy]||"NA"):null;const groupLabel=draftGroupBy?(field(draftGroupBy,draft)?.label||draftGroupBy):"";if(draftGroupBy&&groupVal!==lastGroup){rows.push(`<tr class="group-header-row"><td colspan="${colspan}">${esc(groupLabel)}: ${esc(groupVal)}</td></tr>`);lastGroup=groupVal;}for(let rep=1;rep<=4;rep++){let rd={pupae:rep===1?"1":"0",alive:"8",moribund:"1",dead:"1",notes:""};rows.push(`<tr class="${rep===1?'new-product':''}">${cols.map(c=>demoCell(c,p,rep,rd)).join("")}</tr>`)}});document.getElementById("previewBody").innerHTML=rows.join("")}
 function demoCell(c,p,rep,rd){if(c.level==="Product")return rep===1?`<td rowspan="4">${esc(p[c.key]||'Example')}</td>`:"";if(c.key==="rep")return`<td><b>${rep}</b></td>`;if(c.key==="pupae")return`<td class="pupae">${rd.pupae}</td>`;if(c.key==="alive")return`<td>${rd.alive}</td>`;if(c.key==="moribund")return`<td>${rd.moribund}</td>`;if(c.key==="dead")return`<td>${rd.dead}</td>`;if(c.key==="total")return`<td class="total">10</td>`;if(c.level==="Study")return`<td>Study Value</td>`;if(c.level==="Round")return`<td>Round 1</td>`;if(c.level==="Week")return`<td>Week 1</td>`;if(c.level==="Reading")return`<td>24 Hours</td>`;return`<td>Example</td>`}
 function renderEntryNav(){renderRoundPills();let r=getRound();document.getElementById("readingPills").innerHTML=r.readings.map(rd=>`<button class="${rd.id===activeReadingId?'active':'secondary'}" onclick="setActiveReading('${rd.id}')">${structure.useWeeks?`Week ${esc(rd.weekNumber)} — `:''}${esc(rd.readingInterval)}</button>`).join("")+`<button class="primary" onclick="addReading()">+ New Reading</button>`}
-function renderEntry(){let r=getRound(),rdg=getReading();if(!r||!rdg)return;ensureData(r,rdg);let t=tmplFor(rdg),locked=rdg.locked,title=`${structure.useRounds?r.roundOfTesting+' — ':''}${structure.useWeeks?'Week '+rdg.weekNumber+' — ':''}${rdg.readingInterval}`;document.getElementById("activeReadingTitle").textContent=title;document.getElementById("intervalHeader").textContent=title.toUpperCase();document.getElementById("lockedBanner").classList.toggle("hidden",!locked);document.getElementById("editSubmittedButton").classList.toggle("hidden",!locked);document.getElementById("submitReadingButton").disabled=locked;let cols=showFields(t);document.getElementById("entryHead").innerHTML=`<tr>${cols.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr>`;let body=document.getElementById("entryBody");body.innerHTML="";r.products.forEach(p=>{for(let rep=1;rep<=Number(p.repCount||0);rep++){let data=rdg.data[p.id][rep];let tr=document.createElement("tr");if(rep===1)tr.classList.add("new-product");tr.innerHTML=cols.map(c=>entryCell(c,r,rdg,p,rep,data,locked,t)).join("");body.appendChild(tr)}})}
-function entryCell(c,r,rdg,p,rep,data,locked,t){if(c.level==="Product")return rep===1?`<td rowspan="${p.repCount}">${esc(getVal(c.key,r,rdg,p,data,rep,t))}</td>`:"";if(c.key==="rep")return`<td><b>${rep}</b></td>`;if(c.key==="total")return`<td class="total">${num(data.alive)+num(data.moribund)+num(data.dead)||''}</td>`;if(["pupae","alive","moribund","dead","notes"].includes(c.key)||c.level==="Rep")return`<td>${inputFor(c,data[c.key]||"",`setRepData('${rdg.id}','${p.id}','${rep}','${c.key}',this.value)`,locked)}</td>`;return`<td>${esc(getVal(c.key,r,rdg,p,data,rep,t))}</td>`}
+function renderEntry(){let r=getRound(),rdg=getReading();if(!r||!rdg)return;ensureData(r,rdg);let t=tmplFor(rdg),locked=rdg.locked,title=`${structure.useRounds?r.roundOfTesting+' — ':''}${structure.useWeeks?'Week '+rdg.weekNumber+' — ':''}${rdg.readingInterval}`;document.getElementById("activeReadingTitle").textContent=title;document.getElementById("intervalHeader").textContent=title.toUpperCase();document.getElementById("lockedBanner").classList.toggle("hidden",!locked);document.getElementById("editSubmittedButton").classList.toggle("hidden",!locked);document.getElementById("submitReadingButton").disabled=locked;let cols=showFields(t);document.getElementById("entryHead").innerHTML=`<tr>${cols.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr>`;let body=document.getElementById("entryBody");body.innerHTML="";let rowNum=0,lastGroup=null,colspan=Math.max(cols.length,1);r.products.forEach(p=>{const rdProbe=rdg.data[p.id]?.[1]||{};const groupKey=appliedGroupBy;const groupVal=groupKey?(getVal(groupKey,r,rdg,p,rdProbe,1,t)||"NA"):null;const groupLabel=groupKey?(field(groupKey,t)?.label||groupKey):"";if(groupKey&&groupVal!==lastGroup){let tr=document.createElement("tr");tr.className="group-header-row";tr.innerHTML=`<td colspan="${colspan}">${esc(groupLabel)}: ${esc(groupVal)}</td>`;body.appendChild(tr);lastGroup=groupVal;}for(let rep=1;rep<=Number(p.repCount||0);rep++){let data=rdg.data[p.id][rep];let tr=document.createElement("tr");if(rep===1)tr.classList.add("new-product");tr.innerHTML=cols.map((c,ci)=>entryCell(c,r,rdg,p,rep,data,locked,t,rowNum,ci)).join("");body.appendChild(tr);rowNum++}})}
+function entryCell(c,r,rdg,p,rep,data,locked,t,rowNum,colNum){if(c.level==="Product")return rep===1?`<td rowspan="${p.repCount}">${esc(getVal(c.key,r,rdg,p,data,rep,t))}</td>`:"";if(c.key==="rep")return`<td><b>${rep}</b></td>`;if(c.key==="total")return`<td class="total" data-total-for="${rdg.id}|${p.id}|${rep}">${num(data.alive)+num(data.moribund)+num(data.dead)||''}</td>`;if(["pupae","alive","moribund","dead","notes"].includes(c.key)||c.level==="Rep"){let html=inputFor(c,data[c.key]||"",`setRepData('${rdg.id}','${p.id}','${rep}','${c.key}',this.value)`,locked);return`<td>${addGridNavAttrs(html,'entry',rowNum,colNum)}</td>`}return`<td>${esc(getVal(c.key,r,rdg,p,data,rep,t))}</td>`}
+function renderReview(){
+  let rows=rawRows(),cols=exportColumns();
+  document.getElementById("reviewHead").innerHTML=cols.map(c=>`<th>${esc(c)}</th>`).join("");
 
-function renderReview(){let rows=rawRows();document.getElementById("reviewHead").innerHTML=RAW_COLUMNS.map(c=>`<th>${esc(c)}</th>`).join("");document.getElementById("reviewBody").innerHTML=rows.map(row=>`<tr>${RAW_COLUMNS.map(c=>`<td><input class="${reviewOverrides[`${row._rowId}|${c}`]!==undefined?'override':''}" value="${esc(row[c])}" onchange="setOverride('${row._rowId}','${c.replaceAll("'","&#039;")}',this.value)"></td>`).join("")}</tr>`).join("");renderExportHistory()}
-function schemaSignature(){return JSON.stringify({columns:RAW_COLUMNS,template:applied.filter(f=>f.exportCsv).map(f=>({key:f.key,csv:f.csv||f.label,level:f.level,type:f.type,show:f.showSheet,setup:f.includeSetup})),structure});}
-function snapshotRows(){let snap={};rawRows().forEach(r=>{snap[r._rowId]=RAW_COLUMNS.map(c=>`${c}=${r[c]}`).join('||')});return snap;}
+  const editBtn=document.getElementById("editReviewBtn");
+  const saveBtn=document.getElementById("saveReviewBtn");
+  const cancelBtn=document.getElementById("cancelReviewBtn");
+  if(editBtn) editBtn.classList.toggle("hidden", reviewEditMode);
+  if(saveBtn) saveBtn.classList.toggle("hidden", !reviewEditMode);
+  if(cancelBtn) cancelBtn.classList.toggle("hidden", !reviewEditMode);
+
+  let note=document.getElementById("reviewEditNote");
+  if(!note){
+    note=document.createElement("div");
+    note.id="reviewEditNote";
+    note.className="review-editing-note";
+    const scroll=document.querySelector("#reviewPanel .scroll");
+    if(scroll) scroll.parentNode.insertBefore(note, scroll);
+  }
+  note.classList.toggle("hidden", !reviewEditMode);
+  note.textContent="Review edit mode is ON. Edited cells turn red until you click Save Review Edits.";
+
+  document.getElementById("reviewBody").innerHTML=rows.map((row,rowIndex)=>`<tr>${cols.map((c,colIndex)=>{
+    const key=`${row._rowId}|${c}`;
+    const pending=pendingReviewOverrides[key]!==undefined && pendingReviewOverrides[key]!==reviewOverrides[key];
+    const value=pendingReviewOverrides[key]!==undefined ? pendingReviewOverrides[key] : row[c];
+    const html=`<input class="${pending?'review-pending':''}" value="${esc(value)}" ${reviewEditMode?'':'disabled'} onchange="setPendingOverride('${row._rowId}','${c.replaceAll("'","&#039;")}',this.value)">`;
+    return `<td>${addGridNavAttrs(html,'review',rowIndex,colIndex)}</td>`;
+  }).join("")}</tr>`).join("");
+  renderExportHistory();
+}
+
+function enableReviewEditing(){
+  reviewEditMode=true;
+  pendingReviewOverrides={...reviewOverrides};
+  renderReview();
+}
+function setPendingOverride(rid,c,v){
+  pendingReviewOverrides[`${rid}|${c}`]=v;
+  if(event && event.target) event.target.classList.add("review-pending");
+}
+function saveReviewEdits(){
+  reviewOverrides={...pendingReviewOverrides};
+  pendingReviewOverrides={};
+  reviewEditMode=false;
+  renderReview();
+  alert("Review edits saved.");
+}
+function cancelReviewEdits(){
+  if(Object.keys(pendingReviewOverrides||{}).length && !confirm("Discard unsaved review edits?")) return;
+  pendingReviewOverrides={};
+  reviewEditMode=false;
+  renderReview();
+}
+
+function schemaSignature(){return JSON.stringify({columns:exportColumns(),template:applied.filter(f=>f.exportCsv&&!f.archived).map(f=>({key:f.key,csv:f.csv||f.label,level:f.level,type:f.type,show:f.showSheet,setup:f.includeSetup})),structure});}
+function snapshotRows(){let cols=exportColumns(),snap={};rawRows().forEach(r=>{snap[r._rowId]=cols.map(c=>`${c}=${r[c]}`).join('||')});return snap;}
 function exportState(){let currentSchema=schemaSignature(), currentSnap=snapshotRows();if(!lastOfficialSnapshot)return {needsFull:true,reason:'No official full version has been exported yet.',schemaChanged:false,historicalChanged:false,newRows:Object.keys(currentSnap).length};let schemaChanged=currentSchema!==lastOfficialSnapshot.schema;let historicalChanged=false,newRows=0;Object.keys(currentSnap).forEach(id=>{if(lastOfficialSnapshot.rows[id]===undefined)newRows++;else if(lastOfficialSnapshot.rows[id]!==currentSnap[id])historicalChanged=true;});let removedRows=Object.keys(lastOfficialSnapshot.rows).some(id=>currentSnap[id]===undefined);if(removedRows)historicalChanged=true;return {needsFull:schemaChanged||historicalChanged,reason:schemaChanged?'Schema/template columns changed. New full version required.':historicalChanged?'Historical submitted/exported data changed. New full version required.':'Daily export allowed: same schema and only new rows added.',schemaChanged,historicalChanged,newRows};}
 function versionLabel(){return 'v'+String(datasetVersion).padStart(3,'0')}
 function fileBase(){return safePart(study.studyNumber||'bioassay-study')}
@@ -148,32 +1068,178 @@ function downloadDailyCsv(){let state=exportState();if(state.needsFull){alert(`D
 function downloadFullVersionCsv(){let state=exportState();if(lastOfficialSnapshot)datasetVersion++;let reason=prompt('Reason for new full version?', state.reason || 'Full version export');if(reason===null)return;let name=exportFileName('FULL');downloadBlob(name,makeCsv());recordCsvExport('FULL',name,reason||state.reason);lastOfficialSnapshot={schema:schemaSignature(),rows:snapshotRows(),version:datasetVersion};}
 function recordCsvExport(type,file,reason){let rows=rawRows().length;exportHistory.unshift({time:new Date().toLocaleString(),type,version:versionLabel(),rows,reason,file});renderExportHistory();}
 function renderExportHistory(){let state=exportState();let status=document.getElementById('exportStatus');if(status)status.textContent=`Current dataset version: ${versionLabel()} — ${state.reason}`;let body=document.getElementById('exportHistoryBody');if(body)body.innerHTML=exportHistory.map(h=>`<tr><td>${esc(h.time)}</td><td>${esc(h.type)}</td><td>${esc(h.version)}</td><td>${esc(h.rows)}</td><td>${esc(h.reason)}</td><td>${esc(h.file)}</td></tr>`).join('')||`<tr><td colspan="6" class="muted">No CSV exports recorded yet.</td></tr>`;}
-function studyPackage(){return {app:'Bioassay Data Entry',fileType:'bioassay-study-json',savedAt:new Date().toISOString(),study,structure,rounds,activeRoundId,activeReadingId,draft,applied,templateName,templates,dropdowns,reviewOverrides,uploadHistory,lastUploadSnapshot,exportHistory,lastOfficialSnapshot,datasetVersion,studyFileVersion};}
-function saveStudyFile(asVersion=false){if(asVersion)studyFileVersion++;let name=`${fileBase()}_study_${String(studyFileVersion).padStart(3,'0')}.study.json`;let blob=new Blob([JSON.stringify(studyPackage(),null,2)],{type:'application/json'});let url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);}
-function openStudyFile(file){if(!file)return;let reader=new FileReader();reader.onload=e=>{try{let d=JSON.parse(e.target.result);study=d.study||study;structure=d.structure||structure;rounds=d.rounds||rounds;activeRoundId=d.activeRoundId||rounds[0].id;activeReadingId=d.activeReadingId||rounds[0].readings[0].id;draft=d.draft||draft;applied=d.applied||applied;templateName=d.templateName||templateName;templates=d.templates||templates;dropdowns=normalizeDropdowns(d.dropdowns||dropdowns);reviewOverrides=d.reviewOverrides||{};uploadHistory=d.uploadHistory||[];lastUploadSnapshot=d.lastUploadSnapshot||{};exportHistory=d.exportHistory||[];lastOfficialSnapshot=d.lastOfficialSnapshot||null;datasetVersion=d.datasetVersion||1;studyFileVersion=d.studyFileVersion||1;renderAll();alert('Study file opened.');}catch(err){alert('Could not open study file: '+err.message)}};reader.readAsText(file);}
-function setStudy(k,v){study[k]=v;renderAll()} function setRoundValue(k,v){let r=getRound();r[k]=v;renderAll()} function setProduct(pid,k,v){let p=getRound().products.find(x=>x.id===pid);if(p)p[k]=v;renderAll()} function setReading(rid,k,v){let rd=getRound().readings.find(x=>x.id===rid);if(rd&&!rd.locked)rd[k]=v;renderAll()} function setRepData(rid,pid,rep,k,v){let rd=getRound().readings.find(x=>x.id===rid);if(!rd||rd.locked)return;rd.data[pid][rep][k]=v;renderEntry()}
-function createNewStudy(){
- if(!confirm("Create a new blank study? Unsaved changes in the current study will be lost unless you saved a study file."))return;
- study={studyNumber:"",studyLocation:"",indoorOutdoor:"Indoor",containerType:"Cup",waterVolume:"250 mL",doseUnits:"ppm",feedingMethod:"",stressTest:"No",mosquitoSpecies:"Aedes aegypti ORL",larvaeInstar:"",notes:""};
- structure={useRounds:true,useWeeks:false};
- rounds=[makeRound(1)]; activeRoundId=rounds[0].id; activeReadingId=rounds[0].readings[0].id; reviewOverrides={}; uploadHistory=[]; exportHistory=[]; lastOfficialSnapshot=null; datasetVersion=1; studyFileVersion=1;
- let sn=prompt("Study Number?",""); if(sn)study.studyNumber=sn;
- renderAll(); showTab("setup");
+function studyPackage(){
+  return {app:'Bioassay Data Entry',fileType:'bioassay-study-json',savedAt:new Date().toISOString(),study,structure,rounds,activeRoundId,activeReadingId,draft,applied,templateName,templates,dropdowns,reviewOverrides,uploadHistory,lastUploadSnapshot,exportHistory,lastOfficialSnapshot,datasetVersion,studyFileVersion,activeFieldSet,studyFileName,templateMeta,draftGroupBy,appliedGroupBy,fieldSets};
 }
-function setStructure(k,v){structure[k]=v;if(k==="useWeeks"&&!v){draft.find(x=>x.key==="weekNumber").showSheet=false;applied.find(x=>x.key==="weekNumber").showSheet=false}renderAll()} function setRound(idv){activeRoundId=idv;activeReadingId=getRound().readings[0].id;renderAll()} function addRound(){if(!structure.useRounds)return;let r=makeRound(rounds.length+1);rounds.push(r);activeRoundId=r.id;activeReadingId=r.readings[0].id;renderAll()} function addProduct(){getRound().products.push(makeProduct(getRound().products.length));renderAll()} function removeProduct(pid){if(!confirm("Remove product and its data?"))return;let r=getRound();r.products=r.products.filter(p=>p.id!==pid);r.readings.forEach(rd=>delete rd.data[pid]);renderAll()} function addReading(){let w=structure.useWeeks?prompt("Week number?","1"):1;if(!w)return;let i=prompt("Reading interval?","24 Hours");if(!i)return;let rd=makeReading(w,i);getRound().readings.push(rd);activeReadingId=rd.id;renderAll();showTab('entry')} function addStandardReadings(){let r=getRound();["24 Hours","48 Hours","72 Hours","96 Hours"].forEach(i=>{if(!r.readings.some(x=>String(x.weekNumber)==="1"&&x.readingInterval===i))r.readings.push(makeReading(1,i))});renderAll()} function setActiveReading(idv){activeReadingId=idv;renderAll();showTab('entry')} function removeReading(idv){let r=getRound(),rd=r.readings.find(x=>x.id===idv);if(rd?.locked)return alert("Submitted readings are locked.");if(r.readings.length===1)return alert("At least one reading required.");if(!confirm("Remove reading?"))return;r.readings=r.readings.filter(x=>x.id!==idv);activeReadingId=r.readings[0].id;renderAll()} function submitReading(){let rd=getReading();if(!rd||rd.locked)return;let reader=rd.reader||prompt("Reader initials/name?");if(!reader)return alert("Reader is required.");rd.reader=reader;rd.status="Submitted";rd.submittedAt=new Date().toLocaleString();rd.dateOfReading=rd.submittedAt;rd.locked=true;rd.templateSnapshot=JSON.parse(JSON.stringify(applied));renderAll();alert("Submitted and locked.")} function unlockReading(){let rd=getReading();if(!rd?.locked)return;if(!confirm("Unlock for corrections?"))return;rd.locked=false;rd.status="Editing Submitted";renderAll()} function setOverride(rid,c,v){reviewOverrides[`${rid}|${c}`]=v;renderReview()}
-function templateSet(key,prop,val){draft=draft.map(x=>x.key===key?{...x,[prop]:val}:x);if(prop==="type"&&val!=="Dropdown")draft=draft.map(x=>x.key===key?{...x,lib:""}:x);if(prop==="type"&&val==="Dropdown")draft=draft.map(x=>x.key===key?{...x,lib:x.lib||""}:x);renderAll()} function addField(){let label=prompt("Field name?");if(!label)return;let key=label.trim().replace(/[^a-zA-Z0-9]+(.)/g,(_,c)=>c.toUpperCase()).replace(/[^a-zA-Z0-9]/g,"");if(draft.some(x=>x.key===key))return alert("That field already exists.");draft.push(F(key,label,"Study",true,true,false));renderAll()} function editField(key){let f=draft.find(x=>x.key===key);if(!f||f.locked)return;let label=prompt("Field display name:",f.label);if(!label)return;let csv=prompt("CSV header:",f.csv||f.label);if(!csv)return;draft=draft.map(x=>x.key===key?{...x,label,csv}:x);renderAll()} function archiveField(key){if(LOCKED.includes(key))return;if(!confirm("Archive this field? It will be hidden from setup and data entry."))return;draft=draft.map(x=>x.key===key?{...x,archived:true,showSheet:false,includeSetup:false}:x);applied=applied.map(x=>x.key===key?{...x,archived:true,showSheet:false,includeSetup:false}:x);renderAll()} function baseTemplate(type){draft=BASE.map(x=>({...x,showSheet:false}));["product","dose","rep","pupae","alive","moribund","dead","total"].forEach(k=>draft.find(x=>x.key===k).showSheet=true);if(type==="lot")draft.find(x=>x.key==="nbLotNumber").showSheet=true;if(type==="feeding"){let fm=draft.find(x=>x.key==="feedingMethod");fm.showSheet=true;fm.level="Product";fm.includeSetup=true}if(type==="extended"){structure.useWeeks=true;draft.find(x=>x.key==="weekNumber").showSheet=true}renderAll()} function applyTemplate(){applied=JSON.parse(JSON.stringify(draft));alert("Template applied. Submitted readings keep their snapshots.");renderAll()} function newTemplate(){let n=prompt("New template name?","New Template");if(!n)return;templateName=n;draft=BASE.map(x=>({...x}));renderAll()} function saveTemplate(){let n=prompt("Template name?",templateName);if(!n)return;templateName=n;templates[n]=JSON.parse(JSON.stringify(draft));localStorage.setItem("cupAssayTemplates",JSON.stringify(templates));renderAll();alert(`Saved: ${n}`)} function loadTemplate(){let names=Object.keys(templates);if(!names.length)return alert("No saved templates.");let n=prompt("Template to load:\n"+names.join("\n"),names[0]);if(!n||!templates[n])return;templateName=n;draft=JSON.parse(JSON.stringify(templates[n]));renderAll()} function duplicateTemplate(){let n=prompt("Duplicate template name?",templateName+" Copy");if(!n)return;templateName=n;templates[n]=JSON.parse(JSON.stringify(draft));localStorage.setItem("cupAssayTemplates",JSON.stringify(templates));renderAll()} function deleteTemplate(){let names=Object.keys(templates);if(!names.length)return alert("No saved templates.");let n=prompt("Template to delete:\n"+names.join("\n"),templateName);if(!n||!templates[n])return;if(!confirm(`Delete ${n}?`))return;delete templates[n];localStorage.setItem("cupAssayTemplates",JSON.stringify(templates));renderAll()}
+function saveStudyFile(asVersion=false){
+  if(asVersion)studyFileVersion++;
+  let name=`${fileBase()}_study_${String(studyFileVersion).padStart(3,'0')}.study.json`;
+  studyFileName=name;
+  let blob=new Blob([JSON.stringify(studyPackage(),null,2)],{type:'application/json'});
+  let url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  updateContextBar();
+}
+function openStudyFile(file){if(!file)return;let reader=new FileReader();reader.onload=e=>{try{let d=JSON.parse(e.target.result);study=d.study||study;structure=d.structure||structure;rounds=d.rounds||rounds;activeRoundId=d.activeRoundId||rounds[0].id;activeReadingId=d.activeReadingId||rounds[0].readings[0].id;draft=d.draft||draft;applied=d.applied||applied;templateName=d.templateName||templateName;templates=d.templates||templates;dropdowns=normalizeDropdowns(d.dropdowns||dropdowns);reviewOverrides=d.reviewOverrides||{};uploadHistory=d.uploadHistory||[];lastUploadSnapshot=d.lastUploadSnapshot||{};exportHistory=d.exportHistory||[];lastOfficialSnapshot=d.lastOfficialSnapshot||null;datasetVersion=d.datasetVersion||1;studyFileVersion=d.studyFileVersion||1;templateMeta=d.templateMeta||templateMeta;draftGroupBy=d.draftGroupBy||getTemplateMeta(templateName).groupBy||'';appliedGroupBy=d.appliedGroupBy||draftGroupBy||'';fieldSets=d.fieldSets||fieldSets;activeFieldSet=d.activeFieldSet||inferFieldSetForTemplate(templateName);studyFileName=file?.name||d.studyFileName||'Opened study file';reviewEditMode=false;pendingReviewOverrides={};renderAll();alert('Study file opened.');}catch(err){alert('Could not open study file: '+err.message)}};reader.readAsText(file);}
+function setStudy(k,v){study[k]=v;renderAll()} function setRoundValue(k,v){let r=getRound();r[k]=v;renderAll()} function setProduct(pid,k,v){let p=getRound().products.find(x=>x.id===pid);if(p)p[k]=v;renderAll()} function setReading(rid,k,v){let rd=getRound().readings.find(x=>x.id===rid);if(rd&&!rd.locked)rd[k]=v;renderAll()} function setRepData(rid,pid,rep,k,v){let rd=getRound().readings.find(x=>x.id===rid);if(!rd||rd.locked)return;rd.data[pid][rep][k]=v;updateVisibleTotal(rid,pid,rep)}
+function updateVisibleTotal(rid,pid,rep){let rd=getRound().readings.find(x=>x.id===rid);if(!rd||!rd.data[pid]||!rd.data[pid][rep])return;let data=rd.data[pid][rep];let total=num(data.alive)+num(data.moribund)+num(data.dead);let cell=document.querySelector(`[data-total-for="${rid}|${pid}|${rep}"]`);if(cell)cell.textContent=total||"";}
+
+function openNewStudyPanel(){
+  renderNewStudyTypeOptions();
+  const p=document.getElementById('newStudyPanel');
+  if(p){p.classList.remove('hidden');p.scrollIntoView({behavior:'smooth',block:'start'});}
+}
+function closeNewStudyPanel(){
+  document.getElementById('newStudyPanel')?.classList.add('hidden');
+}
+function renderNewStudyTypeOptions(){
+  const sel=document.getElementById('newStudyTypeSelect');
+  if(!sel) return;
+  ensureFieldSets();
+  const names=Object.keys(fieldSets).sort((a,b)=>a.localeCompare(b));
+  sel.innerHTML=names.map(n=>`<option value="${esc(n)}" ${n===activeFieldSet?'selected':''}>${esc(n)}</option>`).join("");
+  renderNewStudyTemplateOptions();
+}
+function templatesForStudyType(studyType){
+  ensureTemplateMetaForAll();
+  return Object.keys(templates).filter(name=>templateStudyType(name)===studyType).sort((a,b)=>a.localeCompare(b));
+}
+function renderNewStudyTemplateOptions(){
+  const type=document.getElementById('newStudyTypeSelect')?.value || activeFieldSet || 'Larvicide Bioassay';
+  const sel=document.getElementById('newStudyTemplateSelect');
+  if(!sel) return;
+  let names=templatesForStudyType(type);
+  if(!names.length) names=Object.keys(templates).sort((a,b)=>a.localeCompare(b));
+  sel.innerHTML=names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join("");
+}
+function createNewStudyFromForm(){
+  const sn=(document.getElementById('newStudyNumberInput')?.value||'').trim();
+  const chosen=document.getElementById('newStudyTemplateSelect')?.value;
+  const stype=document.getElementById('newStudyTypeSelect')?.value || 'Larvicide Bioassay';
+  if(!sn) return alert('Study Number is required.');
+  if(!chosen || !templates[chosen]) return alert('Choose a template.');
+  templateName=chosen;
+  activeFieldSet=stype;
+  draft=cloneTemplateObj(templates[chosen]);
+  applied=cloneTemplateObj(draft);
+  if(typeof getTemplateMeta==='function'){
+    draftGroupBy=getTemplateMeta(chosen).groupBy||'';
+    appliedGroupBy=draftGroupBy;
+    setTemplateMeta(chosen,{...(getTemplateMeta(chosen)||{}),fieldSet:stype});
+  }
+  study={studyNumber:sn,studyLocation:"",indoorOutdoor:"Indoor",containerType:"Cup",waterVolume:"250 mL",doseUnits:"ppm",feedingMethod:"",stressTest:"No",mosquitoSpecies:"Aedes aegypti ORL",larvaeInstar:"",notes:""};
+  structure={useRounds:true,useWeeks:false};
+  rounds=[makeRound(1)]; activeRoundId=rounds[0].id; activeReadingId=rounds[0].readings[0].id;
+  reviewOverrides={}; uploadHistory=[]; exportHistory=[]; lastOfficialSnapshot=null; datasetVersion=1; studyFileVersion=1; studyFileName="Not saved";
+  closeNewStudyPanel();
+  renderAll(); showTab("setup");
+}
+
+function createNewStudy(){ openNewStudyPanel(); }
+
+function duplicateConditionsWithSpecies(){
+  const r=getRound(); if(!r) return;
+  let speciesField=draft.find(f=>f.key==='mosquitoSpecies');
+  if(speciesField){speciesField.level='Product';speciesField.includeSetup=true;speciesField.showSheet=true;speciesField.exportCsv=true;}
+  let speciesFieldA=applied.find(f=>f.key==='mosquitoSpecies');
+  if(speciesFieldA){speciesFieldA.level='Product';speciesFieldA.includeSetup=true;speciesFieldA.showSheet=true;speciesFieldA.exportCsv=true;}
+  const options=activeOptions('Mosquito Species');
+  const entered=prompt('Enter species to duplicate conditions for (comma-separated):\n\nKnown species:\n'+options.join('\n'), options.slice(0,2).join(', '));
+  if(!entered) return;
+  const species=[...new Set(entered.split(',').map(x=>x.trim()).filter(Boolean))];
+  if(!species.length) return;
+  const base=(r.products||[]).map(p=>({...p}));
+  if(!base.length) return alert('No current conditions to duplicate.');
+  const replace=confirm('Replace current conditions with species-expanded conditions?\n\nOK = replace current rows\nCancel = append new species rows to current rows');
+  const newRows=[];
+  species.forEach(sp=>base.forEach(p=>{const np={...p,id:id(),mosquitoSpecies:sp};newRows.push(np);}));
+  if(replace) r.products=newRows; else r.products=[...r.products,...newRows];
+  // clear reading data for new product ids; existing data remains for existing rows if appended
+  r.readings.forEach(rd=>ensureData(r,rd));
+  renderAll();
+  alert(`Created ${newRows.length} species condition row(s).`);
+}
+function setStructure(k,v){structure[k]=v;if(k==="useWeeks"&&!v){draft.find(x=>x.key==="weekNumber").showSheet=false;applied.find(x=>x.key==="weekNumber").showSheet=false}renderAll()} function setRound(idv){activeRoundId=idv;activeReadingId=getRound().readings[0].id;renderAll()} function addRound(){if(!structure.useRounds)return;let r=makeRound(rounds.length+1);rounds.push(r);activeRoundId=r.id;activeReadingId=r.readings[0].id;renderAll()} function duplicateRound(){if(!structure.useRounds)return;let source=getRound();if(!source)return;let n=rounds.length+1;let newRound=JSON.parse(JSON.stringify(source));let productIdMap={};newRound.id=id();newRound.roundOfTesting=`Round ${n}`;newRound.products=(source.products||[]).map(p=>{let np={...p,id:id()};productIdMap[p.id]=np.id;return np});newRound.readings=(source.readings||[]).map(rd=>({id:id(),weekNumber:rd.weekNumber,readingInterval:rd.readingInterval,dateOfReading:"",reader:"",status:"Draft",submittedAt:"",locked:false,templateSnapshot:null,data:{}}));rounds.push(newRound);activeRoundId=newRound.id;activeReadingId=newRound.readings[0]?.id;renderAll();alert(`Duplicated ${source.roundOfTesting||"round"} as ${newRound.roundOfTesting}. Setup, products, and reading schedule were copied; mortality data was cleared.`)} function addProduct(){getRound().products.push(makeProduct(getRound().products.length));renderAll()} function removeProduct(pid){if(!confirm("Remove product and its data?"))return;let r=getRound();r.products=r.products.filter(p=>p.id!==pid);r.readings.forEach(rd=>delete rd.data[pid]);renderAll()} function addReading(){let w=structure.useWeeks?prompt("Week number?","1"):1;if(!w)return;let i=prompt("Reading interval?","24 Hours");if(!i)return;let rd=makeReading(w,i);getRound().readings.push(rd);activeReadingId=rd.id;renderAll();showTab('entry')} function addStandardReadings(){let r=getRound();["24 Hours","48 Hours","72 Hours","96 Hours"].forEach(i=>{if(!r.readings.some(x=>String(x.weekNumber)==="1"&&x.readingInterval===i))r.readings.push(makeReading(1,i))});renderAll()} function setActiveReading(idv){activeReadingId=idv;renderAll();showTab('entry')} function removeReading(idv){let r=getRound(),rd=r.readings.find(x=>x.id===idv);if(rd?.locked)return alert("Submitted readings are locked.");if(r.readings.length===1)return alert("At least one reading required.");if(!confirm("Remove reading?"))return;r.readings=r.readings.filter(x=>x.id!==idv);activeReadingId=r.readings[0].id;renderAll()} function submitReading(){let rd=getReading();if(!rd||rd.locked)return;let reader=rd.reader||prompt("Reader initials/name?");if(!reader)return alert("Reader is required.");rd.reader=reader;rd.status="Submitted";rd.submittedAt=new Date().toLocaleString();rd.dateOfReading=rd.submittedAt;rd.locked=true;rd.templateSnapshot=JSON.parse(JSON.stringify(applied));renderAll();alert("Submitted and locked.")} function unlockReading(){let rd=getReading();if(!rd?.locked)return;if(!confirm("Unlock for corrections?"))return;rd.locked=false;rd.status="Editing Submitted";renderAll()} function setOverride(rid,c,v){reviewOverrides[`${rid}|${c}`]=v;renderReview()}
+function moveField(key,direction){markTemplateDirty();let i=draft.findIndex(x=>x.key===key);if(i<0)return;let j=i+direction;if(j<0||j>=draft.length)return;let item=draft.splice(i,1)[0];draft.splice(j,0,item);renderAll()} function moveVisibleField(key,direction){markTemplateDirty();let visible=showFields(draft);let vi=visible.findIndex(x=>x.key===key);if(vi<0)return;let target=visible[vi+direction];if(!target)return;let i=draft.findIndex(x=>x.key===key),j=draft.findIndex(x=>x.key===target.key);let item=draft.splice(i,1)[0];draft.splice(j,0,item);renderAll()}
+function templateSet(key,prop,val){markTemplateDirty();draft=draft.map(x=>x.key===key?{...x,[prop]:val}:x);if(prop==="type"&&val!=="Dropdown")draft=draft.map(x=>x.key===key?{...x,lib:""}:x);if(prop==="type"&&val==="Dropdown")draft=draft.map(x=>x.key===key?{...x,lib:x.lib||""}:x);renderAll()} function addField(){
+  markTemplateDirty();
+  let label=prompt("Template-specific field name?\\n\\nUse this for fields needed only by this template or study. To add a required/core field for all templates in this study type, use Edit Study Type Fields.");
+  if(!label)return;
+  let key=label.trim().replace(/[^a-zA-Z0-9]+(.)/g,(_,c)=>c.toUpperCase()).replace(/[^a-zA-Z0-9]/g,"");
+  if(draft.some(x=>x.key===key))return alert("Field already exists.");
+  draft.push(F(key,label,"Study",true,true,false));
+  renderAll();
+} function editField(key){let f=draft.find(x=>x.key===key);if(!f||f.locked)return;let label=prompt("Field display name:",f.label);if(!label)return;let csv=prompt("CSV header:",f.csv||f.label);if(!csv)return;draft=draft.map(x=>x.key===key?{...x,label,csv}:x);markTemplateDirty();renderAll()} function archiveField(key){
+  const required=requiredStudyTypeKeys();
+  if(required.has(key)) return alert("This field is required by the selected study type. You can hide it from setup/data sheet, but it will remain in the raw data model and export as NA when blank.");
+  if(!confirm("Remove this template-specific field?"))return;
+  draft=draft.map(x=>x.key===key?{...x,archived:true,showSheet:false,includeSetup:false,exportCsv:false}:x);
+  markTemplateDirty();
+  applied=applied.map(x=>x.key===key?{...x,archived:true,showSheet:false,includeSetup:false,exportCsv:false}:x);
+  renderAll();
+} function baseTemplate(type){markTemplateDirty();draft=makeTemplatePreset(type);if(type==="extended")structure.useWeeks=true;renderAll()} function applyTemplate(){applied=JSON.parse(JSON.stringify(draft));appliedGroupBy=draftGroupBy;alert("Template applied. Submitted readings keep their snapshots.");renderAll()} function newTemplate(){
+  if(templateEditMode && !confirmLoseTemplateChanges()) return;
+  let n=prompt("New custom template name?","New Template");
+  if(!n)return;
+  templateName=n;
+  ensureFieldSets();
+  draft=cloneTemplateObj(fieldSets[activeFieldSet]||BASE);
+  draftGroupBy="";
+  templates[n]=cloneTemplateObj(draft);
+  setTemplateStudyType(n,activeFieldSet);
+  if(typeof setTemplateMeta==='function') setTemplateMeta(n,{...(getTemplateMeta(n)||{}),groupBy:"",fieldSet:activeFieldSet,studyType:activeFieldSet});
+  localStorage.setItem("cupAssayTemplates",JSON.stringify(templates));
+  setTemplateBaseline();
+  enterTemplateEditMode();
+  renderAll();
+} function saveTemplate(){
+  saveTemplateChanges();
+} function loadTemplate(){let names=Object.keys(templates);if(!names.length)return alert("No saved templates.");let n=prompt("Template to load:\n"+names.join("\n"),names[0]);if(!n||!templates[n])return;templateName=n;draft=JSON.parse(JSON.stringify(templates[n]));renderAll()} function duplicateTemplate(){let n=prompt("Duplicate template name?",templateName+" Copy");if(!n)return;templateName=n;templates[n]=JSON.parse(JSON.stringify(draft));localStorage.setItem("cupAssayTemplates",JSON.stringify(templates));renderAll()} function deleteTemplate(){let names=Object.keys(templates);if(!names.length)return alert("No saved templates.");let n=prompt("Template to delete:\n"+names.join("\n"),templateName);if(!n||!templates[n])return;if(!confirm(`Delete ${n}?`))return;delete templates[n];localStorage.setItem("cupAssayTemplates",JSON.stringify(templates));renderAll()}
 function persistDropdowns(){localStorage.setItem("cupAssayDropdowns",JSON.stringify(dropdowns))}
 function selectDropdownLibrary(lib){activeDropdownLibrary=lib;renderAll()}
 function addDropdownLibrary(){let name=prompt("New dropdown library name?");if(!name)return;name=name.trim();if(!name)return;if(dropdowns[name]&&!dropdowns[name].archivedLibrary)return alert("That library already exists.");dropdowns[name]=dropdowns[name]||{active:[],archived:[],archivedLibrary:false};dropdowns[name].archivedLibrary=false;activeDropdownLibrary=name;persistDropdowns();renderAll()}
 function editDropdownLibrary(){let old=activeDropdownLibrary;if(!old)return;let name=prompt("Rename dropdown library:",old);if(!name||name===old)return;name=name.trim();if(dropdowns[name])return alert("That library name already exists.");dropdowns[name]=dropdowns[old];delete dropdowns[old];draft.forEach(f=>{if(f.lib===old)f.lib=name});applied.forEach(f=>{if(f.lib===old)f.lib=name});activeDropdownLibrary=name;persistDropdowns();renderAll()}
 function archiveDropdownLibrary(){let lib=activeDropdownLibrary;if(!lib)return;if(!confirm(`Archive dropdown library "${lib}"? It will be hidden from future selections.`))return;dropdowns[lib].archivedLibrary=true;activeDropdownLibrary=activeLibraries()[0]||"";persistDropdowns();renderAll()}
+async function loadSharedTemplates(){
+  try{
+    const res=await fetch('./templates.json',{cache:'no-store'});
+    if(!res.ok) throw new Error('No shared templates.json found.');
+    const data=await res.json();
+    const incoming=data.templates||data;
+    templates={...templates,...incoming};
+    if(data.templateMeta){templateMeta={...templateMeta,...data.templateMeta};localStorage.setItem('cupAssayTemplateMeta',JSON.stringify(templateMeta));} if(data.fieldSets){fieldSets={...fieldSets,...data.fieldSets};persistFieldSets();}
+    localStorage.setItem('cupAssayTemplates',JSON.stringify(templates));
+    alert(`Loaded ${Object.keys(incoming).length} shared template(s). Use Load to choose one.`);
+  }catch(e){alert('Could not load shared templates: '+e.message);}
+}
+function exportTemplateLibrary(){
+  const payload={exportedAt:new Date().toISOString(),templates,templateMeta,fieldSets};
+  downloadBlob('templates.json',JSON.stringify(payload,null,2));
+}
+function importTemplateLibrary(file){
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const data=JSON.parse(reader.result);
+      const incoming=data.templates||data;
+      if(!incoming || typeof incoming!=='object') throw new Error('Invalid template file.');
+      templates={...templates,...incoming};
+      if(data.templateMeta){templateMeta={...templateMeta,...data.templateMeta};localStorage.setItem('cupAssayTemplateMeta',JSON.stringify(templateMeta));}
+      localStorage.setItem('cupAssayTemplates',JSON.stringify(templates));
+      alert(`Imported ${Object.keys(incoming).length} template(s).`);
+      renderAll();
+    }catch(e){alert('Could not import templates: '+e.message);}
+  };
+  reader.readAsText(file);
+}
 function addDropdownOption(){let lib=activeDropdownLibrary,opt=document.getElementById("newDropdownOption")?.value.trim();if(!lib)return alert("Select or create a library first.");if(!opt)return;let all=[...activeOptions(lib),...archivedOptions(lib)].map(x=>x.toLowerCase());if(all.includes(opt.toLowerCase()))return alert("That option already exists or is archived.");dropdowns[lib].active.push(opt);dropdowns[lib].active.sort();persistDropdowns();document.getElementById("newDropdownOption").value="";renderAll()}
 function editDropdownOption(oldOpt){let lib=activeDropdownLibrary;if(!lib)return;let val=prompt("Edit option:",oldOpt);if(!val||val===oldOpt)return;val=val.trim();let all=[...activeOptions(lib),...archivedOptions(lib)].filter(x=>x!==oldOpt).map(x=>x.toLowerCase());if(all.includes(val.toLowerCase()))return alert("That option already exists or is archived.");dropdowns[lib].active=dropdowns[lib].active.map(x=>x===oldOpt?val:x).sort();persistDropdowns();renderAll()}
 function archiveDropdownOption(opt){let lib=activeDropdownLibrary;if(!lib)return;if(!confirm(`Archive option "${opt}"?`))return;dropdowns[lib].active=dropdowns[lib].active.filter(x=>x!==opt);if(!dropdowns[lib].archived.some(x=>x.toLowerCase()===opt.toLowerCase()))dropdowns[lib].archived.push(opt);dropdowns[lib].archived.sort();persistDropdowns();renderAll()}
 function csvEscape(v){let t=v==null?"NA":String(v);return /[",\n]/.test(t)?`"${t.replaceAll('"','""')}"`:t}
-function csvFromRows(rows){return[RAW_COLUMNS.join(","),...rows.map(r=>RAW_COLUMNS.map(c=>csvEscape(r[c])).join(","))].join("\n")}
+function csvFromRows(rows){let cols=exportColumns();return[cols.join(","),...rows.map(r=>cols.map(c=>csvEscape(r[c])).join(","))].join("\n")}
 function makeCsv(){return csvFromRows(rawRows())}
-function rowSignature(row){return RAW_COLUMNS.map(c=>`${c}=${row[c]}`).join("||")}
+function rowSignature(row){let cols=exportColumns();return cols.map(c=>`${c}=${row[c]}`).join("||")}
 function currentSnapshot(){let snap={};rawRows().forEach(r=>snap[r._rowId]=rowSignature(r));return snap}
 function updateRowsOnly(){return rawRows().filter(r=>lastUploadSnapshot[r._rowId]!==rowSignature(r))}
 function selectedLabguruRows(){let mode=document.getElementById("labguruUploadMode")?.value||"full";return mode==="updates"?updateRowsOnly():rawRows()}
@@ -182,7 +1248,7 @@ function safePart(v){return String(v||"NA").trim().replace(/[^a-zA-Z0-9_-]+/g,"-
 function timestampPart(){let d=new Date(),pad=n=>String(n).padStart(2,"0");return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}`}
 function nextUploadVersion(){return String(uploadHistory.length+1).padStart(3,"0")}
 function generateLabguruFilename(){let mode=document.getElementById("labguruUploadMode")?.value||"full",round=getRound(),reading=getReading();let modePart=mode==="updates"?"updates-only":mode==="full_plus_updates"?"raw-plus-updates":"raw-full";let weekPart=structure.useWeeks?`_W${safePart(reading?.weekNumber)}`:"";let roundPart=structure.useRounds?`_R${safePart(round?.roundOfTesting).replace(/^Round-/i,"")}`:"";let interval=safePart(reading?.readingInterval||"all-readings");let name=`${safePart(study.studyNumber||"cup-assay")}${roundPart}${weekPart}_${interval}_${modePart}_v${nextUploadVersion()}_${timestampPart()}.csv`;let el=document.getElementById("labguruFileName");if(el)el.value=name;let ex=document.getElementById("labguruNameExamples");if(ex)ex.innerHTML=`${safePart(study.studyNumber||"BA-SXXXX")}_R01_W01_24-Hours_raw-full_v001_YYYY-MM-DD_HHMM.csv<br>${safePart(study.studyNumber||"BA-SXXXX")}_R01_updates-only_v002_YYYY-MM-DD_HHMM.csv`;return name}
-function downloadBlob(filename,csv){let blob=new Blob([csv],{type:"text/csv;charset=utf-8;"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)}
+function downloadBlob(filename,csv){let blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8;"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)}
 function downloadCsv(){downloadDailyCsv()}
 function downloadLabguruCsv(){let name=document.getElementById("labguruFileName")?.value||generateLabguruFilename();downloadBlob(name,selectedLabguruCsv())}
 function clearLabguruKey(){let k=document.getElementById("labguruApiKey");if(k)k.value=""}
@@ -192,7 +1258,19 @@ function markManualLabguruUpload(){recordUpload("Manual upload marked complete")
 async function uploadToSecureBackend(){let key=document.getElementById("labguruApiKey")?.value||"",endpoint=document.getElementById("labguruBackendUrl")?.value||"";if(!key)return alert("Paste a Labguru API key for this upload. It will not be saved.");if(!endpoint)return alert("Enter the secure HTTPS backend upload endpoint.");if(!secureEndpointOk(endpoint))return alert("For safety, upload endpoint must be HTTPS. Localhost is allowed for development only.");let filename=document.getElementById("labguruFileName")?.value||generateLabguruFilename();let payload={apiKey:key,action:document.getElementById("labguruStudyAction")?.value||"existing",experimentId:document.getElementById("labguruExperimentId")?.value||"",newStudyName:document.getElementById("labguruNewStudyName")?.value||"",datasetId:document.getElementById("labguruDatasetId")?.value||"",filename,mode:document.getElementById("labguruUploadMode")?.value||"full",csv:selectedLabguruCsv()};document.getElementById("labguruStatus").value="Uploading...";try{let res=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});if(!res.ok)throw new Error(`Upload failed: ${res.status}`);document.getElementById("labguruStatus").value="Upload complete";recordUpload("Uploaded through secure backend")}catch(e){document.getElementById("labguruStatus").value="Upload failed";alert(e.message)}finally{clearLabguruKey()}}
 function renderLabguruPanel(){let el=document.getElementById("labguruFileName");if(el&&!el.value)generateLabguruFilename();renderUploadHistory()}
 function renderUploadHistory(){let body=document.getElementById("uploadHistoryBody");if(!body)return;body.innerHTML=uploadHistory.map(h=>`<tr><td>${esc(h.time)}</td><td>${esc(h.mode)}</td><td>${esc(h.file)}</td><td>${esc(h.rows)}</td><td>${esc(h.experiment)}</td><td>${esc(h.dataset)}</td><td>${esc(h.status)}</td></tr>`).join("")||`<tr><td colspan="7" class="muted">No uploads recorded yet.</td></tr>`}
-function saveDraft(){localStorage.setItem("cupAssayStudyDraft",JSON.stringify(studyPackage()));alert("Draft saved.")} function loadDraft(){let s=localStorage.getItem("cupAssayStudyDraft");if(!s)return alert("No saved draft found.");let d=JSON.parse(s);study=d.study||study;structure=d.structure||structure;rounds=d.rounds||rounds;activeRoundId=d.activeRoundId||rounds[0].id;activeReadingId=d.activeReadingId||rounds[0].readings[0].id;draft=d.draft||draft;applied=d.applied||applied;templateName=d.templateName||templateName;templates=d.templates||templates;dropdowns=normalizeDropdowns(d.dropdowns||dropdowns);reviewOverrides=d.reviewOverrides||{};uploadHistory=d.uploadHistory||[];lastUploadSnapshot=d.lastUploadSnapshot||{};exportHistory=d.exportHistory||[];lastOfficialSnapshot=d.lastOfficialSnapshot||null;datasetVersion=d.datasetVersion||1;studyFileVersion=d.studyFileVersion||1;renderAll();alert("Draft loaded.")} function showTab(tab){currentTab=tab;["home","setup","template","entry","review","labguru"].forEach(n=>{document.getElementById(n+"Panel").classList.toggle("hidden",tab!==n);document.getElementById(n+"Tab").classList.toggle("active",tab===n)});renderAll()}
+function saveDraft(){localStorage.setItem("cupAssayStudyDraft",JSON.stringify(studyPackage()));alert("Draft saved.")} function loadDraft(){let s=localStorage.getItem("cupAssayStudyDraft");if(!s)return alert("No saved draft found.");let d=JSON.parse(s);study=d.study||study;structure=d.structure||structure;rounds=d.rounds||rounds;activeRoundId=d.activeRoundId||rounds[0].id;activeReadingId=d.activeReadingId||rounds[0].readings[0].id;draft=d.draft||draft;applied=d.applied||applied;templateName=d.templateName||templateName;templates=d.templates||templates;dropdowns=normalizeDropdowns(d.dropdowns||dropdowns);reviewOverrides=d.reviewOverrides||{};uploadHistory=d.uploadHistory||[];lastUploadSnapshot=d.lastUploadSnapshot||{};exportHistory=d.exportHistory||[];lastOfficialSnapshot=d.lastOfficialSnapshot||null;datasetVersion=d.datasetVersion||1;studyFileVersion=d.studyFileVersion||1;renderAll();alert("Draft loaded.")} function showTab(tab){
+  if(currentTab==='template' && tab!=='template' && typeof confirmLoseTemplateChanges==='function' && !confirmLoseTemplateChanges()) return;
+  currentTab=tab;
+  ["home","setup","template","entry","review","labguru"].forEach(n=>{
+    const panel=document.getElementById(n+"Panel");
+    const tabBtn=document.getElementById(n+"Tab");
+    if(panel) panel.classList.toggle("hidden",tab!==n);
+    if(tabBtn) tabBtn.classList.toggle("active",tab===n);
+  });
+  renderAll();
+}
+window.addEventListener('beforeunload', function(e){ if(templateDirty){ e.preventDefault(); e.returnValue=''; }});
+ensureFieldSets();
 renderAll();
 if ("serviceWorker" in navigator) { navigator.serviceWorker.register("./service-worker.js").catch(()=>{}); }
 </script>
