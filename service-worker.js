@@ -1,4 +1,4 @@
-const CACHE_NAME = "bioassay-data-entry-v1";
+const CACHE_NAME = "bioassay-data-entry-v2";
 
 const FILES_TO_CACHE = [
   "./",
